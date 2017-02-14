@@ -1,13 +1,18 @@
-## John's Cheatsheets
+# John's Cheatsheets
+
 
 * Markup Languages
 	* [MarkDown](Markup/Markdown.md)
 	* [reStructuredText](Markup/reStructuredText.md)
 * Python
-	* MatPlotLib
+	* [Matplotlib](Python/Matplotlib.md)
+* .NET
+	* [C#](dotNet/CSharp.md)
+* Java
+	* [Log4j](Java/Log4j.md)
 * Source Control
-	* Git
+	* [Git](SourceControl/Git.md)
 * DevOps
-	* Docker
+	* [Docker](DevOps/Docker.md)
 
 
