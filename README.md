@@ -10,6 +10,7 @@
 	* [Matplotlib](Python/Matplotlib.md)
 * .NET
 	* [C#](dotNET/CSharp.md)
+	* [Akka.NET](dotNET/Akka.md)
 * Java
 	* [Log4j](Java/Log4j.md)
 * Source Control
