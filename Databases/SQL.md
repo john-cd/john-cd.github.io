@@ -55,6 +55,7 @@ WHERE Address IS NULL
 SELECT ProductName,UnitPrice*(UnitsInStock+ISNULL(UnitsOnOrder,0))
 FROM Products
 ```
+
 ## -- DML: INSERT
 
 ```SQL
@@ -101,9 +102,10 @@ WHERE CustomerName='Alfreds Futterkiste' AND ContactName='Maria Anders';
 
 ## -- Databases
 
-	CREATE DATABASE my_db;
-
-	DROP DATABASE database_name
+```SQL
+CREATE DATABASE my_db;
+DROP DATABASE database_name
+```
 
 ## -- Tables
 
@@ -188,7 +190,7 @@ DROP CONSTRAINT pk_PersonID
 
 ## -- FOREIGN KEY constraints
 
-```
+```SQL
 CREATE TABLE Orders
 (
 O_Id int NOT NULL PRIMARY KEY,
@@ -221,7 +223,7 @@ DROP CONSTRAINT fk_PerOrders
 
 ## -- CHECK constraints
 
-```
+```SQL
 CREATE TABLE Persons
 (
 P_Id int NOT NULL CHECK (P_Id>0),
@@ -250,7 +252,7 @@ DROP CONSTRAINT chk_Person
 
 ## -- DEFAULT constraints
 
-```
+```SQL
 CREATE TABLE Orders
 (
 O_Id int NOT NULL,
@@ -412,7 +414,7 @@ CONVERT(VARCHAR(10),GETDATE(),110)
 ## SQL Server Data Types
 
 
-Data type / Description / Storage
+**Data type / Description / Storage**
 
 `char(n)`
 Fixed width character string. Maximum 8,000 characters
@@ -572,34 +574,36 @@ Useful aggregate functions:
 * `MIN()` - Returns the smallest value
 * `SUM()` - Returns the sum
 
-	SELECT COUNT(DISTINCT column_name) FROM table_name;
+```SQL
+SELECT COUNT(DISTINCT column_name) FROM table_name;
 
-	SELECT TOP 1 column_name FROM table_name
-	ORDER BY column_name DESC;
+SELECT TOP 1 column_name FROM table_name
+ORDER BY column_name DESC;
 
-	SELECT column_name, aggregate_function(column_name)
-	FROM table_name
-	WHERE column_name operator value
-	GROUP BY column_name;
+SELECT column_name, aggregate_function(column_name)
+FROM table_name
+WHERE column_name operator value
+GROUP BY column_name;
 
-	SELECT Shippers.ShipperName, COUNT(Orders.OrderID) AS NumberOfOrders
-	FROM Orders
-	LEFT JOIN Shippers
-	ON Orders.ShipperID=Shippers.ShipperID
-	GROUP BY ShipperName;
+SELECT Shippers.ShipperName, COUNT(Orders.OrderID) AS NumberOfOrders
+FROM Orders
+LEFT JOIN Shippers
+ON Orders.ShipperID=Shippers.ShipperID
+GROUP BY ShipperName;
 
-	SELECT column_name, aggregate_function(column_name)
-	FROM table_name
-	WHERE column_name operator value
-	GROUP BY column_name
-	HAVING aggregate_function(column_name) operator value;
+SELECT column_name, aggregate_function(column_name)
+FROM table_name
+WHERE column_name operator value
+GROUP BY column_name
+HAVING aggregate_function(column_name) operator value;
 
-	SELECT Employees.LastName, COUNT(Orders.OrderID) AS NumberOfOrders
-	FROM Orders
-	INNER JOIN Employees
-	ON Orders.EmployeeID=Employees.EmployeeID)
-	GROUP BY LastName
-	HAVING COUNT(Orders.OrderID) > 10;
+SELECT Employees.LastName, COUNT(Orders.OrderID) AS NumberOfOrders
+FROM Orders
+INNER JOIN Employees
+ON Orders.EmployeeID=Employees.EmployeeID)
+GROUP BY LastName
+HAVING COUNT(Orders.OrderID) > 10;
+```
 
 ## -- SQL Scalar functions
 
@@ -616,112 +620,122 @@ Useful aggregate functions:
 
 ## -- Variables
 
-	DECLARE @myvar char(20);
-	SET @myvar = 'This is a test';
-	SELECT @myvar;
+```SQL
+DECLARE @myvar char(20);
+SET @myvar = 'This is a test';
+SELECT @myvar;
+```
 
 ## -- Scalar Function
 
-	CREATE FUNCTION FunctionName
-	(
-	-- Add the parameters for the function here
-	@p1 int
-	)
-	RETURNS int
-	AS
-	BEGIN
-	-- Declare the return variable here
-	DECLARE @Result int
-	-- Add the T-SQL statements to compute the return value here
-	SELECT @Result = @p1
+```SQL
+CREATE FUNCTION FunctionName
+(
+-- Add the parameters for the function here
+@p1 int
+)
+RETURNS int
+AS
+BEGIN
+-- Declare the return variable here
+DECLARE @Result int
+-- Add the T-SQL statements to compute the return value here
+SELECT @Result = @p1
 
-	-- Return the result of the function
-	RETURN @Result
-	END
+-- Return the result of the function
+RETURN @Result
+END
+```
 
 ## -- TABLE-VALUE FUNCTION
 
-	USE AdventureWorks
-	GO
+```SQL
+USE AdventureWorks
+GO
 
-	IF OBJECT_ID (N'dbo.EmployeeByID' ) IS NOT NULL
-	   DROP FUNCTION dbo .EmployeeByID
-	GO
+IF OBJECT_ID (N'dbo.EmployeeByID' ) IS NOT NULL
+   DROP FUNCTION dbo .EmployeeByID
+GO
 
-	CREATE FUNCTION dbo. EmployeeByID(@InEmpID int)
-	RETURNS @retFindReports TABLE
-	(
-		-- columns returned by the function
-		EmployeeID int NOT NULL,
-		Name nvarchar(255 ) NOT NULL,
-		Title nvarchar(50 ) NOT NULL,
-		EmployeeLevel int NOT NULL
+CREATE FUNCTION dbo. EmployeeByID(@InEmpID int)
+RETURNS @retFindReports TABLE
+(
+	-- columns returned by the function
+	EmployeeID int NOT NULL,
+	Name nvarchar(255 ) NOT NULL,
+	Title nvarchar(50 ) NOT NULL,
+	EmployeeLevel int NOT NULL
+)
+AS
+-- body of the function
+BEGIN
+   WITH DirectReports(Name , Title , EmployeeID , EmployeeLevel , Sort ) AS
+	(SELECT CONVERT( varchar(255 ), c .FirstName + ' ' + c.LastName ),
+		e.Title ,
+		e.EmployeeID ,
+		1 ,
+		CONVERT(varchar (255), c. FirstName + ' ' + c .LastName)
+	 FROM HumanResources .Employee AS e
+		  JOIN Person .Contact AS c ON e.ContactID = c.ContactID
+	 WHERE e .EmployeeID = @InEmpID
+   UNION ALL
+	 SELECT CONVERT (varchar( 255), REPLICATE ( '| ' , EmployeeLevel) +
+		c.FirstName + ' ' + c. LastName),
+		e.Title ,
+		e.EmployeeID ,
+		EmployeeLevel + 1,
+		CONVERT ( varchar(255 ), RTRIM (Sort) + '| ' + FirstName + ' ' +
+				 LastName)
+	 FROM HumanResources .Employee as e
+		  JOIN Person .Contact AS c ON e.ContactID = c.ContactID
+		  JOIN DirectReports AS d ON e. ManagerID = d. EmployeeID
 	)
-	AS
-	-- body of the function
-	BEGIN
-	   WITH DirectReports(Name , Title , EmployeeID , EmployeeLevel , Sort ) AS
-		(SELECT CONVERT( varchar(255 ), c .FirstName + ' ' + c.LastName ),
-			e.Title ,
-			e.EmployeeID ,
-			1 ,
-			CONVERT(varchar (255), c. FirstName + ' ' + c .LastName)
-		 FROM HumanResources .Employee AS e
-			  JOIN Person .Contact AS c ON e.ContactID = c.ContactID
-		 WHERE e .EmployeeID = @InEmpID
-	   UNION ALL
-		 SELECT CONVERT (varchar( 255), REPLICATE ( '| ' , EmployeeLevel) +
-			c.FirstName + ' ' + c. LastName),
-			e.Title ,
-			e.EmployeeID ,
-			EmployeeLevel + 1,
-			CONVERT ( varchar(255 ), RTRIM (Sort) + '| ' + FirstName + ' ' +
-					 LastName)
-		 FROM HumanResources .Employee as e
-			  JOIN Person .Contact AS c ON e.ContactID = c.ContactID
-			  JOIN DirectReports AS d ON e. ManagerID = d. EmployeeID
-		)
-	   -- copy the required columns to the result of the function
+   -- copy the required columns to the result of the function
 
-	   INSERT @retFindReports
-	   SELECT EmployeeID, Name, Title, EmployeeLevel
-		 FROM DirectReports
-	   ORDER BY Sort
-	   RETURN
-	END
-	GO
+   INSERT @retFindReports
+   SELECT EmployeeID, Name, Title, EmployeeLevel
+	 FROM DirectReports
+   ORDER BY Sort
+   RETURN
+END
+GO
+```
 
 ## -- STORED PROCEDURE
 
-	CREATE PROCEDURE ProcedureName
-			-- Add the parameters for the stored procedure here
-			@p1 int = 0 ,
-			@p2 int = 0
-	AS
-	BEGIN
-			-- SET NOCOUNT ON added to prevent extra result sets from
-			-- interfering with SELECT statements.
-			SET NOCOUNT ON;
+```SQL
+CREATE PROCEDURE ProcedureName
+		-- Add the parameters for the stored procedure here
+		@p1 int = 0 ,
+		@p2 int = 0
+AS
+BEGIN
+		-- SET NOCOUNT ON added to prevent extra result sets from
+		-- interfering with SELECT statements.
+		SET NOCOUNT ON;
 
-		-- Insert statements for procedure here
-			SELECT @p1 , @p2
-	END
-	GO
+	-- Insert statements for procedure here
+		SELECT @p1 , @p2
+END
+GO
+```
 
 ## Self-join:
 
 Q. Here's the data in a table 'orders'
 
-customer_id order_id order_day
-123        27424624    25Dec2011
-123        89690900    25Dec2010
-797        12131323    25Dec2010
-876        67145419    15Dec2011
+	customer_id order_id order_day
+	123        27424624    25Dec2011
+	123        89690900    25Dec2010
+	797        12131323    25Dec2010
+	876        67145419    15Dec2011
 
 Could you give me SQL for customers who placed orders on both the days, 25th Dec 2010 and 25th Dec 2011?
 
-SELECT o.customer_id, o.order_day
-FROM orders AS o
-INNER JOIN orders AS o1
-ON o.customer_id = o1.customer_id
-WHERE ...
+```SQL
+	SELECT o.customer_id, o.order_day
+	FROM orders AS o
+	INNER JOIN orders AS o1
+	ON o.customer_id = o1.customer_id
+	WHERE ...
+```
