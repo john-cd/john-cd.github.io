@@ -1,5 +1,6 @@
+# SQL Cheatsheet
 
-# -- DML: SELECT
+## -- DML: SELECT
 
 ```SQL
 SELECT * FROM Customers
@@ -14,11 +15,9 @@ FROM table_name;
 SELECT TOP 2 * FROM Customers;
 
 SELECT TOP 50 PERCENT * FROM Customers;
-```
 
-Oracle Syntax:
+-- Oracle Syntax:
 
-```
 SELECT column_name(s)
 FROM table_name
 WHERE ROWNUM <= number;
@@ -56,8 +55,9 @@ WHERE Address IS NULL
 SELECT ProductName,UnitPrice*(UnitsInStock+ISNULL(UnitsOnOrder,0))
 FROM Products
 ```
+## -- DML: INSERT
 
-```
+```SQL
 INSERT INTO table_name
 VALUES (value1,value2,value3,...);
 
@@ -77,7 +77,9 @@ SELECT SupplierName, Country FROM Suppliers
 WHERE Country='Germany';
 ```
 
-```
+## -- DML: UPDATE
+
+```SQL
 UPDATE table_name
 SET column1=value1,column2=value2,...
 WHERE some_column=some_value;
@@ -87,7 +89,9 @@ SET ContactName='Alfred Schmidt', City='Hamburg'
 WHERE CustomerName='Alfreds Futterkiste';
 ```
 
-```
+## -- DML: DELETE
+
+```SQL
 DELETE FROM table_name
 WHERE some_column=some_value;
 
@@ -155,7 +159,7 @@ INSERT INTO #MyTempTable VALUES (1);
 
 ## -- PRIMARY KEY constraint
 
-```
+```SQL
 CREATE TABLE Persons
 (
 P_Id int NOT NULL PRIMARY KEY,
@@ -281,7 +285,7 @@ GO
 
 ## -- Add / drop / alter column in table
 
-```
+```SQL
 ALTER TABLE table_name
 ADD column_name datatype
 
@@ -407,7 +411,6 @@ CONVERT(VARCHAR(10),GETDATE(),110)
 
 ## SQL Server Data Types
 
-String types:
 
 Data type / Description / Storage
 
@@ -475,7 +478,7 @@ Allows whole numbers between -9,223,372,036,854,775,808 and 9,223,372,036,854,77
 
 `decimal(p,s)`
 Fixed precision and scale numbers.
-Allows numbers from -10^38 +1 to 10^38 –1.
+Allows numbers from -10^38 +1 to 10^38 Â–1.
 
 The p parameter indicates the maximum total number of digits that can be stored (both to the left and to the right of the decimal point). p must be a value from 1 to 38. Default is 18.
 
@@ -485,7 +488,7 @@ The s parameter indicates the maximum number of digits stored to the right of th
 
 `numeric(p,s)`
 Fixed precision and scale numbers.
-Allows numbers from -10^38 +1 to 10^38 –1.
+Allows numbers from -10^38 +1 to 10^38 Â–1.
 
 The p parameter indicates the maximum total number of digits that can be stored (both to the left and to the right of the decimal point). p must be a value from 1 to 38. Default is 18.
 
@@ -539,7 +542,7 @@ The same as datetime2 with the addition of a time zone offset
 `timestamp`
 Stores a unique number that gets updated every time a row gets created or modified. The timestamp value is based upon an internal clock and does not correspond to real time. Each table may have only one timestamp variable
 
-Other data types:
+### Other data types:
 
 `sql_variant`
 Stores up to 8,000 bytes of data of various data types, except text, ntext, and timestamp
@@ -562,12 +565,12 @@ SQL aggregate functions return a single value, calculated from values in a colum
 
 Useful aggregate functions:
 
-	* `AVG()` - Returns the average value
-	* `COUNT()` - Returns the number of rows
-	* `TOP 1`
-	* `MAX()` - Returns the largest value
-	* `MIN()` - Returns the smallest value
-	* `SUM()` - Returns the sum
+* `AVG()` - Returns the average value
+* `COUNT()` - Returns the number of rows
+* `TOP 1`
+* `MAX()` - Returns the largest value
+* `MIN()` - Returns the smallest value
+* `SUM()` - Returns the sum
 
 	SELECT COUNT(DISTINCT column_name) FROM table_name;
 
@@ -600,13 +603,13 @@ Useful aggregate functions:
 
 ## -- SQL Scalar functions
 
-	* Converts a field to upper case: SELECT UPPER(column_name) FROM table_name;
-	* Converts a field to lower case: SELECT LOWER(column_name) FROM table_name;
-	* MID() - Extract characters from a text field
-	* LEN() - Returns the length of a text field
-	* ROUND() - Rounds a numeric field to the number of decimals specified
-	* NOW() - Returns the current system date and time
-	* FORMAT() - Formats how a field is to be displayed
+* Converts a field to upper case: SELECT UPPER(column_name) FROM table_name;
+* Converts a field to lower case: SELECT LOWER(column_name) FROM table_name;
+* MID() - Extract characters from a text field
+* LEN() - Returns the length of a text field
+* ROUND() - Rounds a numeric field to the number of decimals specified
+* NOW() - Returns the current system date and time
+* FORMAT() - Formats how a field is to be displayed
 
 	SELECT ProductName, ROUND(Price,0) AS RoundedPrice
 	FROM Products;
