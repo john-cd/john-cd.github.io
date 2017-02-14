@@ -10,6 +10,7 @@
 * https://git-scm.com/doc
 
 ## [26 MOST USED GIT COMMANDS (A GIT CHEAT-SHEET)](http://www.mrgeek.me/technology/26-most-used-git-commands-a-git-cheat-sheet/)
+
 	$ mkdir repos
 	$ cd ~/repos
 	$ git clone https://mrgeek@bitbucket.org/mrgeek/repository01.git
@@ -19,7 +20,9 @@
 	$ ls ~/repos
 	$ cd ~/repos/repository01-practice/
 	$ ls -al
+
 git shows in red that in my repo there are files modified but not committed.
+
 	$ git status
 	$ git add README
 	$ git add -A
@@ -30,70 +33,90 @@ git shows in red that in my repo there are files modified but not committed.
 	$ git init --bare foobar.git
 	$ git rev-parse --show-toplevel
 	$ git rev-parse --git-dir
+
 'ssh-keygen' on your hostgator server to generate a key
 ~ is a quick way of typing your home directory
+
 	$ rm -rf ~/public_html/localrepo.git
 	$ git -- update-server-info
-go to ~/public_html/localrepo.git and type "git pull"
+
+go to ~/public_html/localrepo.git and type `git pull`
+
 	$ git clone git@bitbucket.org:mrgeek/development_repo1.git
 	$ git config global user.name "Firstname Lastname"
 	$ git config --global user.email "your_email@youremail.com"
 
-## STEP BY STEP
+## Step by Step
 
-1. Create a new Git repository in current directory
+Create a new Git repository in current directory:
+
 	git init
 
-2. Create an empty Git repository in the specified directory
+Create an empty Git repository in the specified directory:
+
 	git init <directory>
 
-3. Copy an existing Git repository.
+Copy an existing Git repository:
+	
 	git clone <repo>
 
-4. Clone the repository located at <repo> into the folder called <directory> on the local machine.
+Clone the repository located at <repo> into the folder called <directory> on the local machine:
+
 	git clone <repo> <directory>
 	git clone username@host:/path/to/repository
 
-5. Config
+Config:
+
 	git config --global user.name <name>
 	git config --global user.email <email>
 
-6. Stage all changes in <file> for the next commit
+Stage all changes in `<file>` for the next commit:
+	
 	git add <file>
 
-7. Stage all changes in <directory> for the next commit.
+Stage all changes in <directory> for the next commit:
+
 	git add <directory>
 
-8. Commit the staged snapshot to the project history
+Commit the staged snapshot to the project history:
+
 	git commit
 	git commit -m "<message>"
 
-* Add and commit all in one 
+Add and commit all in one:
+
 	git commit -am "message"
 
-* Fix up the most recent commit.
+Fix up the most recent commit:
+
 	git commit --amend
 
-* List which files are staged, unstaged, and untracked.
+List which files are staged, unstaged, and untracked:
+
 	git status
 	git status -s
 
-* Show file diff
-	git diff                 #  git diff by itself doesnít show all changes made since your last commit ñ only changes that are still unstaged.
+Show file diff:
+
+	git diff                 #  git diff by itself doesn‚Äôt show all changes made since your last commit ‚Äì only changes that are still unstaged.
 	git diff --staged   #  Shows file differences between staging and the last file version
 
-* open GUI
+Open GUI:
+
 	git gui
 
-* Displays committed snapshots
+Displays committed snapshots:
+
 	git log -n <limit>
 	git log --graph --decorate --oneline
 
-* Checking out commits, and checking out branches.
+Checking out commits, and checking out branches:
+
 	git checkout <commit>
 	git checkout master #  Return to the master branch (or whatever branch we choose)
 
-* Check out a previous version of a file
+Check out a previous version of a file:
+
 	git checkout <commit> <file>
 	git checkout HEAD hello.py  #  check out the most recent version
 
@@ -101,76 +124,99 @@ go to ~/public_html/localrepo.git and type "git pull"
 
 Branches are just pointers to commits.
 
-* List all of the branches in your repository.  Also tell you what branch you're currently in:
+List all of the branches in your repository.  Also tell you what branch you're currently in:
+
 	git branch
-* Create a new branch called <branch>. 
+	
+Create a new branch called <branch>. 
+
 	git branch <branch>
-* This does not check out the new branch. you need:
+
+This does not check out the new branch. you need:
+
 	git checkout <existing-branch>
-* Or direcly create-and-check out <new-branch>.
+
+Or direcly create-and-check out <new-branch>.
+
 	git checkout -b <new-branch>
-* Safe delete the branch
+
+Safe delete the branch:
+
 	git branch -d <branch>
-* Merge the specified branch into the current branch
+
+Merge the specified branch into the current branch:
+
 	git merge <branch>
 
-* Undo any undesired changes
+Undo any undesired changes
 
 Generate a new commit that undoes all of the changes introduced in <commit>, then apply it to the current branch
-git revert <commit>
-git revert undoes a single commitóit does not ìrevertî back to the previous state of a project by removing all subsequent commits.
 
-* Dangerous method - erases history
-git reset
+	git revert <commit>
 
-* List the remote connections you have to other repositories.
-git remote -v
+git revert undoes a single commit‚Äîit does not ‚Äúrevert‚Äù back to the previous state of a project by removing all subsequent commits.
 
-* Create a new connection / delete a connection to a remote repository.
-git remote add <name> <url>  # often "origin"
-git remote rm <name> # delete
+Dangerous method - erases history
+	
+	git reset
 
-* Fetch the specified remoteís copy of the current branch and immediately merge it into the local copy. This is the same as git fetch <remote> followed by git merge origin/<current-branch>.
-git pull <remote>
+List the remote connections you have to other repositories.
+	
+	git remote -v
 
-* Put my changes on top of what everybody else has done. ensure a linear history by preventing unnecessary merge commits.
-git pull --rebase <remote>
+Create a new connection / delete a connection to a remote repository.
+	
+	git remote add <name> <url>  # often "origin"
+	git remote rm <name> # delete
 
-* Transfer commits from your local repository to a remote repo.
-git push <remote> <branch>
+Fetch the specified remote‚Äôs copy of the current branch and immediately merge it into the local copy. This is the same as git fetch <remote> followed by git merge origin/<current-branch>.
 
-* Pushes the current branch to the remote server and links the local branch to the remote so next time you can do git pull or git push
-git push -u origin <branch>
+	git pull <remote>
+
+Put my changes on top of what everybody else has done. ensure a linear history by preventing unnecessary merge commits.
+	
+	git pull --rebase <remote>
+
+Transfer commits from your local repository to a remote repo.
+	
+	git push <remote> <branch>
+
+Pushes the current branch to the remote server and links the local branch to the remote so next time you can do git pull or git push
+	
+	git push -u origin <branch>
 
 	
 ## Typical Workflows
 
 ###  Short-lived topic branches
-* Start a new feature git checkout -b new-feature master
-* Edit some files
-git add <file>
-git commit -m "Start a feature"
-* Edit some files
-git add <file>
-git commit -m "Finish a feature"
-* Merge in the new-feature branch
-git checkout master
-git merge new-feature
-git branch -d new-feature
 
+* Start a new feature: `git checkout -b new-feature master`
+* Edit some files:
+	
+	git add <file>
+	git commit -m "Start a feature"
+* Edit some files
+	git add <file>
+	git commit -m "Finish a feature"
+* Merge in the new-feature branch
+	git checkout master
+	git merge new-feature
+	git branch -d new-feature
 
 ### Centralized repo
 
-* to push the master branch to the central repo:
-	git push origin master
-if local history has diverged from the central repository, Git will refuse the request
-	git pull --rebase origin master
+* To push the master branch to the central repo:
 
+	git push origin master
+	
+If local history has diverged from the central repository, Git will refuse the request
+	
+	git pull --rebase origin master
 
 ## Sync my local repo with the remote repo
 
 	git pull origin master
 	git add filename.xyz
-	git commit . -m ìcommentî
+	git commit . -m ‚Äúcomment‚Äù
 	git push origin master
 
