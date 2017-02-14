@@ -7,7 +7,7 @@
 * Python
 	* [Matplotlib](Python/Matplotlib.md)
 * .NET
-	* [C#](dotNet/CSharp.md)
+	* [C#](dotNET/CSharp.md)
 * Java
 	* [Log4j](Java/Log4j.md)
 * Source Control
