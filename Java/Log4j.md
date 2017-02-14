@@ -1,14 +1,14 @@
 # Apache Log4j 2
 
 http://www.tutorialspoint.com/log4j/log4j_quick_guide.htm
-
 http://www.tutorialspoint.com/log4j/index.htm
 
 
 ## Key Components
-	* loggers: Responsible for capturing logging information.
-	* appenders: Responsible for publishing logging information to various preferred destinations.
-	* layouts: Responsible for formatting logging information in different styles.
+
+* loggers: Responsible for capturing logging information.
+* appenders: Responsible for publishing logging information to various preferred destinations.
+* layouts: Responsible for formatting logging information in different styles.
 
 
 There are seven levels of logging defined within the API: OFF, DEBUG, INFO, ERROR, WARN, FATAL, and ALL.
@@ -70,24 +70,24 @@ import org.apache.logging.log4j.Logger;
 
 public class MyTest {
 
-private static final Logger logger = LogManager.getLogger(); // equiv to  LogManager.getLogger(MyTest.class);
-private static final Logger logger = LogManager.getLogger("HelloWorld");
+	private static final Logger logger = LogManager.getLogger(); // equiv to  LogManager.getLogger(MyTest.class);
+	private static final Logger logger = LogManager.getLogger("HelloWorld");
 
-public static void main(String[] args) {
-     logger.setLevel(Level.WARN);
-     logger.info("Hello, World!");
-     // string interpolation
-     logger.debug("Logging in user {} with birthday {}", user.getName(), user.getBirthdayCalendar());
+	public static void main(String[] args) {
+	     logger.setLevel(Level.WARN);
+	     logger.info("Hello, World!");
+	     // string interpolation
+	     logger.debug("Logging in user {} with birthday {}", user.getName(), user.getBirthdayCalendar());
 
-// pre-Java 8 style optimization: explicitly check the log level
-// to make sure the expensiveOperation() method is only called if necessary
-if (logger.isTraceEnabled()) {
-logger.trace("Some long-running operation returned {}", expensiveOperation());
-}
+	     // pre-Java 8 style optimization: explicitly check the log level
+	     // to make sure the expensiveOperation() method is only called if necessary
+	     if (logger.isTraceEnabled()) {
+		logger.trace("Some long-running operation returned {}", expensiveOperation());
+	     }
 
-     // Java-8 style optimization: no need to explicitly check the log level:
-     // the lambda expression is not evaluated if the TRACE level is not enabledlogger.trace("Some long-running operation returned {}", () -> expensiveOperation());
-     }
+	     // Java-8 style optimization: no need to explicitly check the log level:
+	     // the lambda expression is not evaluated if the TRACE level is not enabledlogger.trace("Some long-running operation returned {}", () -> expensiveOperation());
+	     }
 }
 
 // FORMATTER LOGGER
