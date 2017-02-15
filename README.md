@@ -6,6 +6,8 @@
 	* [reStructuredText](Markup/reStructuredText.md)
 * Databases
 	* [SQL](Databases/SQL.md)
+* Search
+	* [ElasticSearch](Search/ElasticSearch.md)
 * Python
 	* [Matplotlib](Python/Matplotlib.md)
 * .NET
