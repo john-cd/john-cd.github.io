@@ -2,7 +2,9 @@
 
 
 // To install Akka.NET Distributed Actor Framework, run the following command in the Package Manager Console
+
 // PM> Install-Package Akka
+
 // PM> Install-Package Akka.Remote
 
 // Installing with Topshelf is as easy as calling <myApp>.exe install on the command line.
