@@ -1,3 +1,9 @@
+---
+title: Matplotlib Cheatsheet
+category: python
+tags: data visualization
+---
+
 # Matplotlib Cheatsheet
 
 Matplotlib prepares 2D (and some 3D) graphics. 

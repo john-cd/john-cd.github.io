@@ -1,3 +1,9 @@
+---
+title: Markdown Essentials
+category: markup
+tags: github
+---
+
 # Markdown Essentials
 
 [Markdown main site](http://daringfireball.net/projects/markdown/)

@@ -1,3 +1,9 @@
+---
+title: C# Cheatsheet
+category: dotNET
+tags: .NET C# 
+---
+
 # C# Cheatsheet
 
 http://www.digilife.be/quickreferences/qrc/core%20csharp%20and%20.net%20quick%20reference.pdf 

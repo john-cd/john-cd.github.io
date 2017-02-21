@@ -1,3 +1,8 @@
+---
+title: Akka.NET Examples
+category: dotNET
+tags: .NET C# Akka
+---
 # Akka.NET Examples
 
 

@@ -1,3 +1,9 @@
+---
+title: Apache Log4j 2
+category: java
+tags: Java Logs
+---
+
 # Apache Log4j 2
 
 http://www.tutorialspoint.com/log4j/log4j_quick_guide.htm

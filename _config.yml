@@ -1,1 +1,84 @@
+﻿# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: Cruch'n Numbers
+name: S. John Cruchon-Dupeyrat
+email: sjncd2000 at gmail dot com
+# Write an awesome description for your new site here. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+description: > # this means to ignore newlines until "baseurl:"
+    John's musings re: Data, ETL, Analytics, Machine Learning, NLP, Concurrent Programming and Cloud Engineering...    
+#baseurl: "" # the subpath of your site, e.g. /blog
+#url: "" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: sjncd
+github_username:  john-cd
+
+# Build settings
+markdown: kramdown
+
+#theme: minima 
 theme: jekyll-theme-tactile
+# Default theme is: minima
+# Example alternatives: jekyll-theme-slate  jekyll-theme-tactile 
+
+gems:
+  - jekyll-feed
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  
+# Permalinks:
+# permalink: /blog/:year/:month/:day/:title
+
+
+# Not everything is a post or a page. Maybe you want to document the various methods in your open source project, members of a team, or talks at a conference. 
+# Collections allow you to define a new type of document that behave like Pages or Posts do normally, but also have their own unique properties and namespace.
+
+collections:
+  cheatsheets:
+    output: true
+
+# The corresponding folder is <source>/_cheatsheets
+
+# If you’d like Jekyll to create a public-facing, rendered version of each document in your collection, set the output key to true in your collection metadata  
+# http://jekyllrb.com/docs/collections/
+
+
+# Default attributes can also be set for a collection
+defaults:
+  - scope:
+      path: ""  # all pages
+      type: cheatsheets
+    values:
+      layout: page
+      # category: "cheatsheets"
+ 
+# Settings for comments helper
+# Set 'provider' to the comment provider you want to use.
+# Set 'provider' to false to turn commenting off globally.
+comments:
+    provider: disqus
+    disqus:
+      short_name: john-cd-blog    # jekyllbootstrap
+    livefyre:
+      site_id: 123
+    intensedebate:
+      account: 123abc
+    facebook:
+      appid: 123
+      num_posts: 5
+      width: 580
+      colorscheme: light
+    duoshuo:
+      short_name: john-cd-blog

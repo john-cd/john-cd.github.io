@@ -1,3 +1,8 @@
+---
+title: SQL Cheatsheet
+category: databases
+tags: SQL RDBMS
+---
 # SQL Cheatsheet
 
 ## -- DML: SELECT

@@ -1,4 +1,10 @@
-# ELASTICSEARCH CHEATSHEET
+---
+title: ElasticSearch Cheatsheet
+category: search
+tags: IR
+---
+
+## Cheatsheets
 
 http://elasticsearch-cheatsheet.jolicode.com/
 
