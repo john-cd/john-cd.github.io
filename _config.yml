@@ -27,7 +27,7 @@ github_username:  john-cd
 ## Build settings
 # markdown: kramdown
 
-theme: jekyll-theme-tactile 
+theme: minima 
 #theme: jekyll-theme-tactile
 # Default theme is: minima
 # Example alternatives: jekyll-theme-slate  jekyll-theme-tactile 
