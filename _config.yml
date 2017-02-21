@@ -1,4 +1,4 @@
-# Welcome to Jekyll!
+﻿# Welcome to Jekyll!
 #
 # This config file is meant for settings that affect your whole blog, values
 # which you are expected to set up once and rarely edit after that. If you find
@@ -19,7 +19,7 @@ email: sjncd2000 at gmail dot com
 # Write an awesome description for your new site here. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 description: > # this means to ignore newlines until "baseurl:"
     John's musings re: Data, ETL, Analytics, Machine Learning, NLP, Concurrent Programming and Cloud Engineering...    
-baseurl: "" # the subpath of your site, e.g. /blog
+#baseurl: "" # the subpath of your site, e.g. /blog
 #url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: sjncd
 github_username:  john-cd
@@ -27,13 +27,14 @@ github_username:  john-cd
 ## Build settings
 # markdown: kramdown
 
-#theme: minima 
-theme: jekyll-theme-tactile
+theme: minima 
+#theme: jekyll-theme-tactile
 # Default theme is: minima
 # Example alternatives: jekyll-theme-slate  jekyll-theme-tactile 
 
 #gems:
 #  - jekyll-feed
+#  - jekyll-sitemap
 
 exclude:
   - Gemfile
