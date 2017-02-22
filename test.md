@@ -3,6 +3,11 @@ title: Test
 layout: page
 published: false
 ---
+{% comment %}
+{% for post in paginator.posts %}
+    {% include tile.html %}
+{% endfor %}
+{% endcomment %}
 
 {% comment %}
 Dynamic menu 
