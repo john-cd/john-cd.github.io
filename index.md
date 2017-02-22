@@ -5,4 +5,7 @@
 layout: home
 ---
 
+## Projects / Repos
 
+* [John's Cloud](https://john-cd.github.io/johnscloud/)
+    * Useful CloudFormation templates and devops scripts

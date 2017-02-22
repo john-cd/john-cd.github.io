@@ -4,16 +4,17 @@ category: sourcecontrol
 tags: SCM DevOps
 ---
 
-# Git Cheatsheet
+# Git Cheatsheets
 
 * [Graphical git cheatsheet](http://byte.kde.org/~zrusin/git/git-cheat-sheet-medium.png)
-* https://bitbucket.org/
-* https://github.com/	
-* https://services.github.com/kit/downloads/github-git-cheat-sheet.pdf
-* https://www.atlassian.com/git/tutorials/svn-to-git-prepping-your-team-migration/basic-git-commands
-* https://www.maxoberberger.net/media/cheatsheet/git-cheatsheet-visual.pdf
-* http://ndpsoftware.com/git-cheatsheet.html#loc=workspace;
-* https://git-scm.com/doc
+* [git basic commands](https://www.atlassian.com/git/tutorials/svn-to-git-prepping-your-team-migration/basic-git-commands)
+* [git cheatsheet (visual)](https://www.maxoberberger.net/media/cheatsheet/git-cheatsheet-visual.pdf)
+* [git cheatsheet (interactive)](http://ndpsoftware.com/git-cheatsheet.html#loc=workspace)
+* [git full documentation](https://git-scm.com/doc)
+
+*Repo hosting:*
+* [BitBucket](https://bitbucket.org/)
+* [GitHub](https://github.com/)	
 
 ## [26 MOST USED GIT COMMANDS (A GIT CHEAT-SHEET)](http://www.mrgeek.me/technology/26-most-used-git-commands-a-git-cheat-sheet/)
 
