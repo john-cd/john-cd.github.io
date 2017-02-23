@@ -1,9 +1,6 @@
 ---
 title: Data Manipulation
-<<<<<<< HEAD:_cheatsheets/datascience/datamanipulation.md
-=======
 category: datascience
->>>>>>> newtheme:_cheatsheets/datascience/datamanipulation.md
 tags: data
 ---
 
