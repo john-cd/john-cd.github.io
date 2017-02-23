@@ -8,41 +8,89 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: Cruch'n Numbers
-name: S. John Cruchon-Dupeyrat
-email: sjncd2000 at gmail dot com
-# Write an awesome description for your new site here. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-description: > # this means to ignore newlines until "baseurl:"
-    John's musings re: Data, ETL, Analytics, Machine Learning, NLP, Concurrent Programming and Cloud Engineering...    
-#baseurl: "" # the subpath of your site, e.g. /blog
-#url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: sjncd
-github_username:  john-cd
+## Where things are
+# source:      .
+# destination: ./_site
+# plugins_dir:     ./_plugins
+# layouts_dir:     ./_layouts
+# data_dir: ./_data
 
-## Build settings
-# markdown: kramdown
+# Also see collections section below
 
-theme: minima 
-#theme: jekyll-theme-tactile
-# Default theme is: minima
-# Example alternatives: jekyll-theme-slate  jekyll-theme-tactile 
 
-#gems:
+## Handling Reading
+# safe:         false
+# include:      [".htaccess"]
+include: ['_pages']
+exclude: ['exclude', 'test.bat', 'README.md']
+# keep_files:   [".git", ".svn"]
+# encoding:     "utf-8"
+# markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
+## Filtering Content
+# show_drafts: null
+# limit_posts: 0
+# future:      true
+# unpublished: false
+
+
+## Plugins
+# whitelist: []
+gems:
+  - jekyll-paginate
 #  - jekyll-feed
 #  - jekyll-sitemap
 
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  
-# Permalinks:
-# permalink: /blog/:year/:month/:day/:title
 
+## Conversion / Build Settings
+# markdown:    kramdown
+# highlighter: rouge
+# lsi:         false
+# excerpt_separator: "\n\n"
+
+
+## Serving
+# detach:  false
+# port:    4000
+# host:    127.0.0.1
+# baseurl: "" # does not include hostname
+
+
+## Outputting
+permalink: /blog/:year/:month/:day/:title
+# alternative permalink:     /blog/:title.html
+
+paginate: 10
+paginate_path: /page:num
+# timezone:      null
+
+# quiet:    false
+# defaults: []
+
+## Markdown Processors
+# rdiscount:
+#   extensions: []
+
+# redcarpet:
+#   extensions: []
+
+# kramdown:
+#   auto_ids:       true
+#   footnote_nr:    1
+#   entity_output:  as_char
+#   toc_levels:     1..6
+#   smart_quotes:   lsquo,rsquo,ldquo,rdquo
+#   enable_coderay: false
+
+#   coderay:
+#     coderay_wrap:              div
+#     coderay_line_numbers:      inline
+#     coderay_line_number_start: 1
+#     coderay_tab_width:         4
+#     coderay_bold_every:        10
+#     coderay_css:               style
+
+## Collections  
 
 # Not everything is a post or a page. Maybe you want to document the various methods in your open source project, members of a team, or talks at a conference. 
 # Collections allow you to define a new type of document that behave like Pages or Posts do normally, but also have their own unique properties and namespace.
@@ -63,10 +111,16 @@ defaults:
       path: ""  # all pages
       type: cheatsheets
     values:
-      layout: page
-      # category: "cheatsheets"
- 
+      layout: inner
+      category: "misc"
+  - scope:
+      path: ""  # all pages
+      type: posts
+    values:
+      layout: inner
+      
 ## Settings for comments helper
+
 ## Set 'provider' to the comment provider you want to use.
 ## Set 'provider' to false to turn commenting off globally.
 #comments:

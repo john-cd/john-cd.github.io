@@ -1,5 +1,9 @@
 ---
 title: Data Visualization
+<<<<<<< HEAD
+=======
+category: datascience
+>>>>>>> newtheme
 tags: data
 ---
 

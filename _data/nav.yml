@@ -1,0 +1,6 @@
+main:
+    - { url: '/blog', text: 'Blog' }
+    - { url: '/cheatsheets', text: 'Cheatsheets' }
+    - { url: '/projects', text: 'Projects' }
+    - { url: '/about', text: 'About' }
+    - { url: '/cv', text: 'CV' }

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: inner
 title:  "Jekyll How-To"
 date:   2017-02-20 11:41:26 -0800
 category: frontend
@@ -8,7 +8,7 @@ tags: blog jekyll
 
 # Jekyll Basics
 
-[Jekyll](http://jekyllrb.com)
+[Jekyll Home Page](http://jekyllrb.com)
 
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
 
@@ -16,27 +16,20 @@ Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most ou
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
 
+[Jekyll source code](https://github.com/jekyll/jekyll)
 
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-Guide to basic Jekyll: 
-http://jmcglone.com/guides/github-pages/
+[Guide to basic Jekyll](http://jmcglone.com/guides/github-pages/)
 
 
 # Jekyll Install How-To
 
-http://jekyllrb.com/docs/installation/
+[Install Instructions](http://jekyllrb.com/docs/installation/)
 
-- Install Ruby
-
-https://rubyinstaller.org/
+- Install Ruby via [RubyInstaller](https://rubyinstaller.org/)
 
 - Update RubyGems
 
-```
+```bash
 $ gem update --system
 ```
 
@@ -59,9 +52,7 @@ $ gem list jekyll
 $ gem install bundler
 ```
 
-https://rubygems.org/gems/bundler
-
-bundler is a gem that manages other Ruby gems. It makes sure your gems and gem versions are compatible, and that you have all necessary dependencies each gem requires.
+[Bundler](https://rubygems.org/gems/bundler) is a gem that manages other Ruby gems. It makes sure your gems and gem versions are compatible, and that you have all necessary dependencies each gem requires.
 
 - Create a new site
 
@@ -84,10 +75,9 @@ With gem-based themes, some of the site’s directories (such as the assets, _la
 ~/myblog $ bundle exec jekyll serve
 ```
 
-Now browse to [http://localhost:4000]
+Now browse to [localhost:4000](http://localhost:4000)
 
-
-http://jekyllrb.com/docs/quickstart/
+[Jekyll Quickstart](http://jekyllrb.com/docs/quickstart/)
 
 When you run bundle exec jekyll serve, Bundler uses the gems and versions as specified in Gemfile.lock to ensure your Jekyll site builds with no compatibility or dependency conflicts.
 
@@ -105,7 +95,7 @@ $ jekyll serve
 
 # Themes
 
-[https://jekyllrb.com/docs/themes/](https://jekyllrb.com/docs/themes/)
+[Theme documentation](https://jekyllrb.com/docs/themes/)
 
 To change theme, search for jekyll theme on [RubyGems](https://rubygems.org/search?utf8=%E2%9C%93&query=jekyll-theme) to find other gem-based themes.
 
@@ -138,7 +128,6 @@ $ bundle exec jekyll serve
 You can find out info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
 
 You can find the source code for the Jekyll minima theme at:
-{% include icon-github.html username="jekyll" %} /
 [minima](https://github.com/jekyll/minima)
 
 
@@ -150,7 +139,6 @@ To add new posts, simply add a file in the `_posts` directory that follows the c
 
 Jekyll also offers powerful support for code snippets:
 
-```
 {% highlight ruby %}
 def print_hi(name)
   puts "Hi, #{name}"
@@ -158,7 +146,7 @@ end
 print_hi('Tom')
 #=> prints 'Hi, Tom' to STDOUT.
 {% endhighlight %}
-```
+
 
 
 
