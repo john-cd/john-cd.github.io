@@ -1,0 +1,23 @@
+# Site Settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: "Crunch'n Numbers"
+name: S. John Cruchon-Dupeyrat
+email: sjncd2000 at gmail dot com
+# Write an awesome description for your new site here. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+description: ""
+#baseurl: "" # the subpath of your site, e.g. /blog
+#url: "" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: sjncd
+github_username:  john-cd
+#url: 'http://127.0.0.1:4000' # the base hostname & protocol for your site
+header_text: ''
+footer_text: > # this means to ignore newlines until "baseurl:"
+    John's musings re: Data, ETL, Analytics, Machine Learning, NLP, Concurrent Programming and Cloud Engineering...  
+
+# Admin Settings
+admin_name: 'S. John Cruchon-Dupeyrat'
+admin_email: 'sjncd2000 at gmail.com'
+

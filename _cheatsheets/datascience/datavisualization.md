@@ -1,5 +1,6 @@
 ---
 title: Data Visualization
+category: datascience
 tags: data
 ---
 

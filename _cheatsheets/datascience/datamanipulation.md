@@ -1,5 +1,6 @@
 ---
 title: Data Manipulation
+category: datascience
 tags: data
 ---
 

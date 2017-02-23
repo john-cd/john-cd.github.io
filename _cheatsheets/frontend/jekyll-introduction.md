@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: inner
 category : frontend
 tagline: "Supporting tagline"
 tags : [intro, beginner, jekyll, tutorial]

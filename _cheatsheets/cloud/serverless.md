@@ -6,7 +6,7 @@ tags: python dotNET
 
 # Serverless Cheatsheet
 
-https://serverless.com/
+[Serverless home page](https://serverless.com/)
 
 ## Install
 
@@ -16,15 +16,13 @@ npm install -g serverless
 
 ## Examples
 
-https://github.com/serverless/examples
+[Serverless Examples](https://github.com/serverless/examples)
 
-https://github.com/serverless/serverless-starter
+[Serverless Starter](https://github.com/serverless/serverless-starter)
 
-Python example:
-https://serverlesscode.com/post/python-on-serverless-intro/
+[Python example](https://serverlesscode.com/post/python-on-serverless-intro/)
 
-C# example:
-https://serverless.com/blog/serverless-v1.4.0/
+[C# example](https://serverless.com/blog/serverless-v1.4.0/)
 
 
 ## Cheatsheet
