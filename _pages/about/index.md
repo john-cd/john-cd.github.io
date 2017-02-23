@@ -1,5 +1,5 @@
 ---
-layout: inner
+layout: with_linkedin
 title: About
 permalink: about/
 ---
