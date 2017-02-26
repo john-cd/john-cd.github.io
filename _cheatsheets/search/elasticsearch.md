@@ -6,24 +6,224 @@ tags: IR
 
 ## Cheatsheets
 
-http://elasticsearch-cheatsheet.jolicode.com/
-
-## Key URLs
-
-Kibana:
-
-http://localhost:5601
-
-Sense:
-
-http://localhost:5601/app/sense
-
-ElasticSearch:
-
-http://localhost:9200
+[Jolicode](http://elasticsearch-cheatsheet.jolicode.com/)
 
 
-## Explore
+## Development URLs
+
+[Kibana (port 5601)](http://localhost:5601)
+
+[Sense](http://localhost:5601/app/sense)
+
+[ElasticSearch (port 9200)](http://localhost:9200)
+
+
+## INSTALL
+
+1. Install [curl](http://curl.haxx.se/download.html)
+2. Install [Java](http://www.java.com)
+3. Download [ElasticSearch](https://www.elastic.co/downloads/elasticsearch)
+4. Optionally change the `cluster.name` in the `elasticsearch.yml` configuration
+
+```bash
+cd elasticsearch-<version>
+./bin/elasticsearch -d
+# or on Windows 
+# bin\elasticsearch.bat
+curl 'http://localhost:9200/?pretty'
+```
+
+5.  Install [Kibana](https://www.elastic.co/downloads/kibana)
+    * Open `config/kibana.yml` in an editor
+    * Set the elasticsearch.url to point at your Elasticsearch instance
+    * Run `./bin/kibana` (orbin\kibana.bat on Windows)
+    * Point your browser at [http://localhost:5601](http://localhost:5601)
+
+6. Install [Sense](https://www.elastic.co/guide/en/elasticsearch/guide/current/running-elasticsearch.html#sense)
+
+```bash
+./bin/kibana plugin --install elastic/sense
+```
+
+*On Windows:* 
+
+```bash
+bin\kibana.bat plugin --install elastic/sense
+```  
+Then go to
+
+[http://localhost:5601/app/sense](http://localhost:5601/app/sense)
+
+
+## CURL
+
+```bash
+curl -X<VERB> '<PROTOCOL>://<HOST>:<PORT>/<PATH>?<QUERY_STRING>' -d '<BODY>'
+```
+  
+*verb is GET, POST, PUT, HEAD, or DELETE*
+
+### Examples
+
+```bash
+curl -XGET 'http://localhost:9200/_count?pretty' -d '{ "query": { "match_all": {} }}'
+```
+
+```bash
+curl -XGET <id>.us-west-2.es.amazonaws.com
+
+curl -XGET 'https://<id>.us-west-2.es.amazonaws.com/_count?pretty' -d '{ "query": { "match_all": {} } }'
+
+curl -XPUT https://<id>.us-west-2.es.amazonaws.com/movies/movie/tt0116996 -d '{"directors" : ["Tim Burton"],"genres" : ["Comedy","Sci-Fi"], "plot": "The Earth is invaded by Martians with irresistible weapons and a cruel sense of humor.", "title" : "Mars Attacks!", "actors" :["Jack Nicholson","Pierce Brosnan","Sarah Jessica Parker"], "year" : 1996}'
+```
+
+## Sense
+
+Sense syntax is similar to curl:
+
+Index a document
+
+```
+PUT index/type/1
+{
+ "body": "here"
+}
+```
+and retrieve it
+
+```
+GET index/type/1
+```
+
+## PLUGINS
+
+**URL pattern**
+
+`http://yournode:9200/_plugin/<plugin name>`
+
+On Debian, the script is in: `/usr/share/elasticsearch/bin/plugin`.
+
+__Install various plugins__
+
+```bash
+./bin/plugin --install mobz/elasticsearch-head
+./bin/plugin --install lmenezes/elasticsearch-kopf/1.2
+./bin/plugin --install elasticsearch/marvel/latest
+```
+__Remove a plugin__
+
+```bash
+./bin/plugin --remove
+```
+
+__List installed plugins__
+
+```bash
+./bin/plugin --list
+```
+```
+GET /_nodes?plugin=true
+```
+[Elasticsearch monitoring and management plugins](https://blog.codecentric.de/en/2014/03/elasticsearch-monitoring-and-management-plugins/)
+
+**Head**
+
+[Head](http://mobz.github.io/elasticsearch-head/)
+
+1. `elasticsearch/bin/plugin -install mobz/elasticsearch-head`
+2. open [http://localhost:9200/_plugin/head](http://localhost:9200/_plugin/head)
+
+[elastichq.org](http://www.elastichq.org/)
+
+**BigDesk**
+
+Live charts and statistics for elasticsearch cluster: 
+[BigDesk](http://bigdesk.org/)
+
+**Kopf**
+
+[Kopf](https://github.com/lmenezes/elasticsearch-kopf)
+
+```
+./bin/plugin --install lmenezes/elasticsearch-kopf/1.2`
+```
+
+**Marvel**
+
+```bash
+./bin/plugin --install elasticsearch/marvel/latest
+```
+
+## Integrations (CMS, import/export, hadoop...)
+
+[Integrations](https://www.elastic.co/guide/en/elasticsearch/plugins/current/integrations.html)
+
+**Aspire**
+
+[Aspire](http://www.searchtechnologies.com/aspire-for-elasticsearch)
+
+Aspire is a framework and libraries of extensible components designed to enable creation of solutions to acquire data from one or more content repositories (such as file systems, relational databases, cloud storage, or content management systems), extract metadata and text from the documents, analyze, modify and enhance the content and metadata if needed, and then publish each document, together with its metadata, to a search engine or other target application
+
+[Docs](https://wiki.searchtechnologies.com/index.php/Main_Page)
+
+**Integration with Hadoop**
+
+[Integration with Hadoop](https://www.elastic.co/guide/en/elasticsearch/hadoop/current/index.html)
+
+[Bulk loading for elastic search http://infochimps.com](https://github.com/infochimps-labs/wonderdog)
+
+**Integration with Spring**
+
+[Spring Data](https://github.com/spring-projects/spring-data-elasticsearch)
+
+**WordPress**
+
+[Wordpress](https://github.com/wallmanderco/elasticsearch-indexer)
+
+## TOOLS
+
+BI platforms that can use ES as an analytics engine:
+
+- Kibana
+- [Grafana](grafana.org/)
+- BIRT
+    * [Birt](http://developer.actuate.com/community/forum/index.php?/topic/36913-birt-web-service-rest-json/?p=138062)
+    * [Birt](http://developer.actuate.com/community/forum/index.php?/topic/36913-birt-web-service-rest-json/?p=138062)
+
+
+- Adminer
+    - [Adminer.org](https://www.adminer.org/)
+    - Database management in a single PHP file. Works with MySQL, PostgreSQL, SQLite, MS SQL, Oracle, SimpleDB, Elasticsearch, MongoDB. Needs a webserver + PHP: [WAMP](https://bitnami.com/stack/wamp)
+
+- Mongolastic
+    - A tool that migrates data from MongoDB to Elasticsearch and vice versa
+    - [Mongolastic](https://github.com/ozlerhakan/mongolastic)
+
+- Elasticsearch-exporter
+    - [Elasticsearch-exporter](https://github.com/mallocator/Elasticsearch-Exporter)
+
+## Code Examples - developing a Web UI for ES
+
+- [Sitepoint](https://www.sitepoint.com/building-recipe-search-site-angular-elasticsearch/)
+- [CottageLabs](https://github.com/CottageLabs/facetview2)
+- [scrutmydocs.org](http://www.scrutmydocs.org/)
+- [qbox.io](https://qbox.io/blog/series/machine-learning)
+
+## Java API
+
+- [Java clients](https://www.elastic.co/blog/found-java-clients-for-elasticsearch)
+- [elasticsearch tutorial](https://github.com/jaibeermalik/elasticsearch-tutorial)
+- [elasticsearchfr/](https://github.com/elasticsearchfr/hands-on)
+- [IBM](http://www.ibm.com/developerworks/library/j-use-elasticsearch-java-apps/index.html)
+- [dzone](https://dzone.com/articles/elasticsearch-java-api)
+
+
+# BASICS
+
+An Elasticsearch cluster can contain multiple indices, which in turn contain multiple types. These types hold multiple documents, and each document has multiple fields.
+
+
+## Explore (using Sense)
 
 `GET _stats/`
 
@@ -63,7 +263,7 @@ PUT my_index/user/1
 
 \#search
 
-``
+```
 GET my_index/_search
 
 GET _count?pretty
@@ -75,201 +275,7 @@ GET _count?pretty
 GET my_index/_mapping
 ```
 
-## INSTALL
 
-1. Install curl: http://curl.haxx.se/download.html
-2. Install Java: http://www.java.com
-3. Download ElasticSearch: https://www.elastic.co/downloads/elasticsearch
-4. Optionally change the `cluster.name` in the `elasticsearch.yml` configuration
-
-```bash
-cd elasticsearch-<version>
-./bin/elasticsearch -d
-or bin\elasticsearch.bat
-curl 'http://localhost:9200/?pretty'
-```
-
-5.  Install Kibana: https://www.elastic.co/downloads/kibana
-	* Open `config/kibana.yml` in an editor
-	* Set the elasticsearch.url to point at your Elasticsearch instance
-	* Run `./bin/kibana` (orbin\kibana.bat on Windows)
-	* Point your browser at http://localhost:5601
-
-6. Install Sense: https://www.elastic.co/guide/en/elasticsearch/guide/current/running-elasticsearch.html#sense
-
-```bash
-./bin/kibana plugin --install elastic/sense
-```
-
-*On Windows:* 
-
-```bash
-bin\kibana.bat plugin --install elastic/sense
-```  
-Then go to
-
-http://localhost:5601/app/sense
-
-
-## CURL / SENSE
-
-```bash
-curl -X<VERB> '<PROTOCOL>://<HOST>:<PORT>/<PATH>?<QUERY_STRING>' -d '<BODY>'
-```
-  
-*verb is GET, POST, PUT, HEAD, or DELETE*
-
-```bash
-curl -XGET 'http://localhost:9200/_count?pretty' -d '{ "query": { "match_all": {} }}'
-```
-
-Sense syntax is similar to curl:
-
-  \# index a doc
-
-```
-PUT index/type/1
-{
- "body": "here"
-}
-```
-  \# and get it ...
-
-```
-GET index/type/1
-```
-
-## PLUGINS
-
-**URL pattern**
-
-http://yournode:9200/_plugin/[plugin name]
-
-On Debian the script is in: `/usr/share/elasticsearch/bin/plugin`.
-
-__Install various plugins__
-
-```bash
-./bin/plugin --install mobz/elasticsearch-head
-./bin/plugin --install lmenezes/elasticsearch-kopf/1.2
-./bin/plugin --install elasticsearch/marvel/latest
-```
-__Remove a plugin__
-
-```bash
-./bin/plugin --remove
-```
-
-__List installed plugins__
-
-```bash
-./bin/plugin --list
-```
-
-```
-GET /_nodes?plugin=true
-```
-
-https://blog.codecentric.de/en/2014/03/elasticsearch-monitoring-and-management-plugins/
-
-**Head**
-
-http://mobz.github.io/elasticsearch-head/
-
-
-1. `elasticsearch/bin/plugin -install mobz/elasticsearch-head`
-2. open `http://localhost:9200/_plugin/head`
-
-http://www.elastichq.org/
-
-**BigDesk**
-
-Live charts and statistics for elasticsearch cluster: 
-
-http://bigdesk.org/
-
-** Kopf **
-
-https://github.com/lmenezes/elasticsearch-kopf
-
-```
-./bin/plugin --install lmenezes/elasticsearch-kopf/1.2`
-```
-
-**Marvel**
-
-```bash
-./bin/plugin --install elasticsearch/marvel/latest
-```
-
-## Integrations (CMS, import/export, hadoop...)
-
-https://www.elastic.co/guide/en/elasticsearch/plugins/current/integrations.html
-
-**Aspire**
-
-http://www.searchtechnologies.com/aspire-for-elasticsearch
-
-Aspire is a framework and libraries of extensible components designed to enable creation of solutions to acquire data from one or more content repositories (such as file systems, relational databases, cloud storage, or content management systems), extract metadata and text from the documents, analyze, modify and enhance the content and metadata if needed, and then publish each document, together with its metadata, to a search engine or other target application
-
-https://wiki.searchtechnologies.com/index.php/Main_Page
-
-**Integration with Hadoop**
-
-https://www.elastic.co/guide/en/elasticsearch/hadoop/current/index.html
-https://github.com/infochimps-labs/wonderdog
-
-**Integration with Spring**
-
-https://github.com/spring-projects/spring-data-elasticsearch
-
-**WordPress**
-
-https://github.com/wallmanderco/elasticsearch-indexer
-
-## TOOLS
-
-BI platforms that can use ES as an analytics engine:
-
-- Kibana
-- Grafana
-	* http://grafana.org/
-- BIRT
-	* http://developer.actuate.com/community/forum/index.php?/topic/36913-birt-web-service-rest-json/?p=138062
-	* http://developer.actuate.com/community/forum/index.php?/topic/36913-birt-web-service-rest-json/?p=138062
-
-
-- Adminer
-	- https://www.adminer.org/
-	- Database management in a single PHP file. Works with MySQL, PostgreSQL, SQLite, MS SQL, Oracle, SimpleDB, Elasticsearch, MongoDB. Needs a webserver + PHP: https://bitnami.com/stack/wamp
-
-- Mongolastic
-	- A tool that migrates data from MongoDB to Elasticsearch and vice versa
-	- https://github.com/ozlerhakan/mongolastic
-
-- Elasticsearch-exporter
-	- https://github.com/mallocator/Elasticsearch-Exporter
-
-## Code Examples  - Web UI for ES
-
-https://www.sitepoint.com/building-recipe-search-site-angular-elasticsearch/
-https://github.com/CottageLabs/facetview2
-http://www.scrutmydocs.org/
-https://qbox.io/blog/series/machine-learning
-
-## Java API
-
-https://www.elastic.co/blog/found-java-clients-for-elasticsearch
-https://github.com/jaibeermalik/elasticsearch-tutorial
-https://github.com/elasticsearchfr/hands-on
-http://www.ibm.com/developerworks/library/j-use-elasticsearch-java-apps/index.html
-https://dzone.com/articles/elasticsearch-java-api
-
-
-
-# BASICS
-
-An Elasticsearch cluster can contain multiple indices, which in turn contain multiple types. These types hold multiple documents, and each document has multiple fields.
 
 ## INSERT DOCUMENTS
 
@@ -291,9 +297,11 @@ Every document in Elasticsearch has a version number. Every time a change is mad
 
 ```
 PUT /website/blog/1?version=1  { "title": "My first blog entry", "text": "Starting to get the hang of this..."}
-# We want this update to succeed only if the current _version of this document in our index is version 1
 
-# External version
+We want this update to succeed only if the current _version of this document in our index is version 1
+
+External version:
+
 PUT /website/blog/2?version=5&version_type=external { "title": "My first external blog entry", "text": "Starting to get the hang of this..."}
 ```
 
@@ -418,7 +426,7 @@ POST /_bulk
 {"doc":{"title":"My updated blog post"}}
 ```
 
-  # bulk in the same index or index/type
+Bulk in the same index or index/type
 
 ```
 POST /website/_bulk
@@ -492,14 +500,14 @@ GET /megacorp/employee/_search
 "query" : {
   "filtered" : {
       "filter" : {
-	  "range" : {
-	      "age" : { "gt" : 30 }
-	  }
+      "range" : {
+          "age" : { "gt" : 30 }
+      }
       },
       "query" : {
-	  "match" : {
-	      "last_name" : "smith"
-	  }
+      "match" : {
+          "last_name" : "smith"
+      }
       }
   }
 }
@@ -583,7 +591,7 @@ The terms query is the same as the term query, but allows you to specify multipl
 
 ## MULTIPLE INDICES OR TYPES
 
-  # all documents all indices
+    # all documents all indices
   /_search
 
   /gb,us/_search
@@ -646,9 +654,9 @@ then sort on the new field
 
 An analyzer is really just a wrapper that combines three functions into a single package:
 
-	* Character filters
-	* Tokenizer
-	* Token filters
+    * Character filters
+    * Tokenizer
+    * Token filters
 
 \#  See how text is analyzed
 
@@ -665,9 +673,11 @@ Every type has its own mapping, or schema definition. A mapping defines the fiel
 
 You can control dynamic nature of mappings
 
-#  mapping (or schema definition) for the tweet type in the gb index
+Mapping (or schema definition) for the tweet type in the gb index
 
+```
   GET /gb/_mapping/tweet
+```
 
 Elasticsearch supports the following simple field types:
 * String: string
@@ -685,20 +695,24 @@ The index attribute controls how the string will be indexed. It can contain one 
 * no  Don’t index this field at all. This field will not be searchable.
 
 If we want to map the field as an exact value, we need to set it to not_analyzed:
+```
   {
     "tag": {
     "type": "string",
     "index": "not_analyzed"
     }
   }
+```
 
 For analyzed string fields, use the analyzer attribute to specify which analyzer to apply both at search time and at index time. By default, Elasticsearch uses the standard analyzer, but you can change this by specifying one of the built-in analyzers, such as whitespace, simple, or english:
+```
   {
     "tweet": {
     "type": "string",
     "analyzer": "english"
     }
   }
+```
 
 \#  create a new index, specifying that the tweet field should use the english analyzer
 
@@ -712,7 +726,7 @@ PUT /gb
                       "user_id" : { "type" : "long" }
                     }}}}
 
-null, arrays, objects: see https://www.elastic.co/guide/en/elasticsearch/guide/current/complex-core-fields.html
+null, arrays, objects: see [complex core fields](https://www.elastic.co/guide/en/elasticsearch/guide/current/complex-core-fields.html)
 
 
 ## AGGREGATES
@@ -803,8 +817,10 @@ By default, indices are assigned five primary shards. The number of primary shar
 
 \# Add an index
 
+```
   PUT /blogs { "settings" : { "number_of_shards" : 3, "number_of_replicas" : 1 }}
   PUT /blogs/_settings { "number_of_replicas" : 2}
+```
 
 - ElasticSearch Shards should be 50 GB or less in size.
 - Use aliases to shelter the underlying index (or indices) and allow index swapping
@@ -816,35 +832,42 @@ By default, indices are assigned five primary shards. The number of primary shar
 
 ## CONFIGURATION
 
-config directory
-yaml file
+- config directory
+- yaml file
 
-Sets the JVM heap size to 0.5 memory size. The OS will use it for file system cache
-prefer not to allocate 30GB !! --> uncompressed pointers
-never let the JVM swap    bootstrap.mlockall = true
-keep the JVM defaults
-do not use G1GC alternative garbage collector
+- Sets the JVM heap size to 0.5 memory size. The OS will use it for file system cache
+- Prefer not to allocate 30GB !! --> uncompressed pointers
+- Never let the JVM swap    bootstrap.mlockall = true
+- Keep the JVM defaults
+- Do not use G1GC alternative garbage collector
 
+```
 cluster.name: <my cluster>
-all nodes in the cluster must have the same cluster name
+```
 
+- All nodes in the cluster must have the same cluster name
+
+```
 node.name: <my_node_name>
+```
+```
 ./bin/elasticsearch --node.name=`hostname`
+```
 to override the configuration file
 
-HTTP port: 9200 and successors
-Transport : 9300 (internal communications)
+- HTTP port: 9200 and successors
+- Transport : 9300 (internal communications)
 
 ### Discovery
 
-AWS plugin available   --> also include integration with S3 (snapshot to S3)
-AWS: multi-AZ is OK but replication across far data centers is not recommended
-see: resiliency
+- AWS plugin available   --> also include integration with S3 (snapshot to S3)
+- AWS: multi-AZ is OK but replication across far data centers is not recommended
+- See: resiliency
 
 Sites plugins -- kopf / head / paramedic / bigdesk / kibana
 - contain static web content (JS, HTML....)
 
-install plugins on ALL machines of the cluster
+Install plugins on ALL machines of the cluster
 
 To install,
 
@@ -855,8 +878,8 @@ To install,
 One type per index is recommended, except for parent child / nested indexes.
 
 index size optimization:
-can disable _source and _all (the index that captures every field - not needed unless the top search bar changes)
-by default, Kibana will search _all
+- can disable `_source` and `_all` (the index that captures every field - not needed unless the top search bar changes)
+- by default, Kibana will search `_all`
 
 data types:
 string, number, bool, datetime, binary, array, object, geo_point, geo_shape, ip, multifield
