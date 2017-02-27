@@ -32,14 +32,14 @@ npm install -g bower
 
 ### Install [generator-aspnet](https://www.npmjs.com/package/generator-aspnet)
         
-```
+```bash
 npm install -g generator-aspnet
 ```
 
 Run with 
-```
+```bash
 yo aspnet
-``
+```
 
 See also: [Building Projects with Yeoman on docs.asp.net](https://docs.microsoft.com/en-us/aspnet/core/client-side/yeoman)
 
