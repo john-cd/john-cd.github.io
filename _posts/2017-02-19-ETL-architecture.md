@@ -4,6 +4,7 @@ layout: inner
 tags: ETL AWS Architecture
 featured_image: /img/assets/architecture_diagram.jpg
 lead_text: Simple batch processing on AWS with Spark
+comments: true
 ---
 
 
