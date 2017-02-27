@@ -1,7 +1,5 @@
 
-        {% if page.comments %}
-        <div id="disqus_thread"></div>
-        {% endif %}
+
         <footer class="site-footer">
             <div class="container">
                 <div class="row">
@@ -13,10 +11,10 @@
         </footer>
         {% if page.comments %}
         <script>
-        var disqus_config = function () {
-        this.page.url = "{{ page.url }}"; 
+        /*var disqus_config = function () {
+        this.page.url = "{{site.url}}{{ page.url }}"; 
         this.page.identifier = "{{ page.id }}";
-        };
+        };*/
         (function() { // DON'T EDIT BELOW THIS LINE
         var d = document, s = d.createElement('script');
         s.src = '//john-cd-blog.disqus.com/embed.js';
