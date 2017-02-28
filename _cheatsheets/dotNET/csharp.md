@@ -1,62 +1,84 @@
 ---
 title: C# Cheatsheet
 category: dotNET
-tags: .NET C# 
+tags: .NET C#
+comments: true 
 ---
 
 # C# Cheatsheet
 
-http://www.digilife.be/quickreferences/qrc/core%20csharp%20and%20.net%20quick%20reference.pdf 
-https://www.cheatography.com/kimyo/cheat-sheets/c/
+[Quick Reference](http://www.digilife.be/quickreferences/qrc/core%20csharp%20and%20.net%20quick%20reference.pdf)
+[Cheatsheet](https://www.cheatography.com/kimyo/cheat-sheets/c/)
 
 
-# C# 6.0 / 7.0 - What is New
+# C# 6.0 / 7.0 - what is new
 
-```C#
-// Readonly properties
-public string FirstName { get; private set; }
+### Readonly properties
+
+```csharp
+public string FirstName { get; private set; }  // private set is accessible from the entire class
 
 public string LastName { get; } // accessible only in constructor
 
-public ICollection<double> Grades { get; } = new List<double>(); // property initiliazer
+public ICollection<double> Grades { get; } = new List<double>(); // property initializer
+```
 
-// Expression-bodied function members
-public override string ToString() => $"{LastName}, {FirstName}";
+### Expression-bodied function members
 
-// using static
+```csharp
+public override string ToString() => "Hi!";
+```
+
+### Using static
+
+```csharp
 using static System.String;
+// also common: 
+// using static System.Math;
+// using static System.Linq.Enumerable;
 
 if (IsNullOrWhiteSpace(lastName))
   throw new ArgumentException(message: "Cannot be blank", paramName: nameof(lastName));
+```
 
-using static System.Math;
-using static System.Linq.Enumerable;
+### Null checking
 
-// Null checking
+```csharp
 var first = person?.FirstName;
 first = person?.FirstName ?? "Unspecified";
 
-// preferred in C# 6:
+// preferred event handing in C# 6:
 this.SomethingHappened?.Invoke(this, eventArgs);
+```
 
-// String interpolation
+### String interpolation
+
+```csharp
 public string GetFormattedGradePoint() => $"Name: {LastName}, {FirstName}. G.P.A: {Grades.Average():F2}";
+```
 
-// Exception Filters
+### Exception Filters
+
+```csharp
 public static async Task<string> MakeRequest()
 {
   var client = new System.Net.Http.HttpClient();
   var streamTask = client.GetStringAsync("https://localHost:10000");
-  try {
-	var responseText = await streamTask;
-	return responseText;
-  } catch (System.Net.Http.HttpRequestException e) when (e.Message.Contains("301"))
+  try 
+  {
+    var responseText = await streamTask;
+    return responseText;
+  } 
+  catch (System.Net.Http.HttpRequestException e) when (e.Message.Contains("301"))
   {
   return "Site Moved";
   }
 }
+```
 
-// List and dict initializers
+### List and dict initializers
+
+```csharp
 private List<string> messages = new List<string>
 {
   "Page not Found",
@@ -70,14 +92,20 @@ private Dictionary<int, string> webErrors = new Dictionary<int, string>
   [302] = "Page moved, but left a forwarding address.",
   [500] = "The web server can't come out to play today."
 };
+```
 
-// out variables
+### Out variables
+
+```csharp
 if (int.TryParse(input, out int result))
     WriteLine(result);
 else
     WriteLine("Could not parse input");
+```
+    
+### Tuples
 
-// Tuples
+```csharp
 var letters = ("a", "b");
 
 (string Alpha, string Beta) namedLetters = ("a", "b");
@@ -101,8 +129,11 @@ public class Point
   y = this.Y;
   }
 }
+```
 
-// ref return values
+### Ref return values
+
+```csharp
 public static ref int Find3(int[,] matrix, Func<int, bool> predicate)
 {
   for (int i = 0; i < matrix.GetLength(0); i++)
@@ -115,8 +146,11 @@ ref var item = ref MatrixSearch.Find3(matrix, (val) => val == 42);
 Console.WriteLine(item);
 item = 24;
 Console.WriteLine(matrix[4, 2]);
+```
 
-// local functions
+### Local functions
+
+```csharp
 public static IEnumerable<char> AlphabetSubset3(char start, char end)
 
 {
