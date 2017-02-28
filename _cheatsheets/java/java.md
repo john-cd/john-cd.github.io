@@ -9,7 +9,7 @@ comments: true
 
 [JDK download](http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html)
 
-``
+```bash
 java -version
 ```
 
