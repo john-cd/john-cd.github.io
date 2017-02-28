@@ -1,7 +1,8 @@
 ---
-title: Using Yeoman to generate a ASP.NET Core app from a template
+title: ASP.NET Core app
 category: dotNET
 tags: .NET C# ASP.NET
+comments: true
 ---
 
 ## Using Yeoman to generate a ASP.NET Core app from a template

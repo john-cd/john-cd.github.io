@@ -5,9 +5,10 @@ tags: .NET C#
 comments: true 
 ---
 
-# C# Cheatsheet
+# C# Cheatsheets
 
 [Quick Reference](http://www.digilife.be/quickreferences/qrc/core%20csharp%20and%20.net%20quick%20reference.pdf)
+
 [Cheatsheet](https://www.cheatography.com/kimyo/cheat-sheets/c/)
 
 
@@ -152,7 +153,6 @@ Console.WriteLine(matrix[4, 2]);
 
 ```csharp
 public static IEnumerable<char> AlphabetSubset3(char start, char end)
-
 {
     if ((start < 'a') || (start > 'z'))
         throw new ArgumentOutOfRangeException(paramName: nameof(start), message: "start must be a letter");
