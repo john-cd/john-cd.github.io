@@ -1,6 +1,6 @@
 ---
 title: Java Pointers
-category: Java
+category: java
 tags: libraries tools 
 comments: true
 ---
