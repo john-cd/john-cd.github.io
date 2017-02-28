@@ -1,7 +1,7 @@
 ---
-title: Data Visualization
-category: datascience
-tags: data
+title: WPF
+category: dotNET
+tags: .NET C#
 comments: true
 ---
 
