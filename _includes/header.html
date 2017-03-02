@@ -20,26 +20,26 @@
 
     <!-- Favicons -->
     <link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64 96x96" href="{{ site.data.global.url }}/img/favicons/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/favicons/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/favicons/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicons/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/favicons/apple-touch-icon-144x144.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="img/favicons/apple-touch-icon-60x60.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/favicons/apple-touch-icon-120x120.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="img/favicons/apple-touch-icon-76x76.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/favicons/apple-touch-icon-152x152.png" />
-    <link rel="icon" type="image/png" href="img/favicons/favicon-196x196.png" sizes="196x196" />
-    <link rel="icon" type="image/png" href="img/favicons/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/png" href="img/favicons/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="img/favicons/favicon-16x16.png" sizes="16x16" />
-    <link rel="icon" type="image/png" href="img/favicons/favicon-128.png" sizes="128x128" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/img/favicons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/favicons/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/favicons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/favicons/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/img/favicons/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/img/favicons/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/img/favicons/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="//img/favicons/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/img/favicons/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/img/favicons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/img/favicons/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/img/favicons/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/img/favicons/favicon-128.png" sizes="128x128" />
     <meta name="application-name" content="{{ site.data.global.title }}">
     <meta name="msapplication-TileColor" content="#FFFFFF" />
-    <meta name="msapplication-TileImage" content="img/favicons/mstile-144x144.png" />
-    <meta name="msapplication-square70x70logo" content="img/favicons/mstile-70x70.png" />
-    <meta name="msapplication-square150x150logo" content="img/favicons/mstile-150x150.png" />
-    <meta name="msapplication-wide310x150logo" content="img/favicons/mstile-310x150.png" />
-    <meta name="msapplication-square310x310logo" content="img/favicons/mstile-310x310.png" />
+    <meta name="msapplication-TileImage" content="/img/favicons/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="/img/favicons/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="/img/favicons/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="/img/favicons/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="/img/favicons/mstile-310x310.png" />
 
     <!-- Fonts -->
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,300italic,400,400italic,700,700italic|Oswald:300,400,700">
@@ -65,17 +65,40 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/"><i class="fa fa-database"></i>  {{ site.data.global.title }}</a>
+
             </div>
+
             <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
+                <form role="search" method="get" action="/search" class="navbar-form navbar-right">
+                    <div class="input-group">
+                        <input id="searchString" placeholder="Search" type="search" name="searchString" class="form-control">
+                        <div class="input-group-btn">
+                            <button id="searchButton" type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </form>
+                <ul class="nav navbar-nav navbar-left"> <!-- navbar-right -->
                     {% for item in site.data.nav.main %}
                         <li>
                             <a href="{{ item.url }}">{{ item.text }}</a>
                         </li>
                     {% endfor %}
                 </ul>
+                    
             </div>
         </div>
     </nav>
+    
+    <!--
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Page 1-1</a></li>
+          <li><a href="#">Page 1-2</a></li>
+          <li><a href="#">Page 1-3</a></li>
+        </ul>
+      </li> -->
+
 
 

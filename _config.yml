@@ -38,8 +38,8 @@ exclude: ['exclude', 'test.bat', 'README.md']
 # whitelist: []
 gems:
   - jekyll-paginate
-#  - jekyll-feed
-#  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-sitemap
 
 
 ## Conversion / Build Settings
