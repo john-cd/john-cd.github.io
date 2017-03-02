@@ -92,6 +92,28 @@ $ jekyll serve
 # Auto-regeneration: enabled. Use `--no-watch` to disable.
 ```
 
+# Plugins
+
+```bash
+$ gem install jekyll-sitemap
+$ gem install jekyll-feed
+etc...
+```
+
+Add to ``_config.yml``
+
+```
+gems:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-sitemap
+``
+
+
+# Custom Search
+
+[Adding a custom Google search](http://digitaldrummerj.me/blogging-on-github-part-7-adding-a-custom-google-search/)
+
 
 # Themes
 
