@@ -11,15 +11,17 @@ tags: AWS
 
 ## Tools
 
-[AWS CLI cloudformation](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/index.html#cli-aws-cloudformation)
-[boto3 cloudformation](http://boto3.readthedocs.io/en/latest/reference/services/cloudformation.html)
+- [AWS CLI cloudformation](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/index.html#cli-aws-cloudformation)
+   - [aws cloudformation validate-template](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/validate-template.html)
+- [boto3 cloudformation](http://boto3.readthedocs.io/en/latest/reference/services/cloudformation.html)
 
-[aws cloudformation validate-template](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/validate-template.html)
 
 ## [YAML](https://en.wikipedia.org/wiki/YAML)
 
 - [YAML Cheatsheet](http://lzone.de/cheat-sheet/YAML)
 - [YAML Cheatsheet 2](https://gist.github.com/anonymous/1486924)
+
+YAML notation for folded text: `>`
 
 ```yaml
 data: >
