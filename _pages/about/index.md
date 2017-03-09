@@ -6,9 +6,9 @@ permalink: about/
 
 My name is S. John Cruchon-Dupeyrat, Ph.D. 
 
-I am a Data Scientist, Technical Program Manager, and a Systems/Data Architect.
+I am a Data Scientist, Technical Program Manager, Product Manager, and Systems/Data Architect.
 
-I am currently working as a freelance data enginering consultant. I also provide intellectual property services (patent analyis, valuation, litigation support).
+I am currently working as a data enginering consultant. I also provide intellectual property services (patent analyis, valuation, patent litigation support).
 
 Interests / expertise include:
 - "Big Data" (large-scale ETL or ELT, DW...)
@@ -21,7 +21,7 @@ Interests / expertise include:
 - Distributed and concurrent programming (C#, .NET, Python...)
 - Data management and data governance.
 
-My most recent corporate job was as a Data Scientist in the Silicon Valley, where I architected a sales and marketing lead generation engine and analytics platform. The project has been acquired for 9 figures by a Russell 2000 company.
+My most recent corporate job was as a Data Scientist in the Silicon Valley, where I architected a sales and marketing lead generation engine and analytics platform. The project has been acquired for 8 figures by a Russell 2000 company.
 
 Before that, I was a machine learning consultant and interim CTO for a number of startups in southern California - projects included image analysis automation; financial portfolio optimization; and marketing predictive analytics for the gaming industry. 
 
