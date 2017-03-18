@@ -34,10 +34,10 @@ npm install -g serverless
 serverless create -p [SERVICE NAME] -t aws-nodejs
 
 # C#
-serverless create --template aws-csharp --path serverlessCSharp
+serverless create --path serverlessCSharp --template aws-csharp
 ```
 
-* Install A Service
+* Install a Service
 
 This is a convenience method to install a pre-made Serverless Service locally by downloading the Github repo and unzipping it.
 
@@ -47,7 +47,7 @@ serverless install -u [GITHUB URL OF SERVICE]
 
 * Deploy All
 
-Use this when you have made changes to your Functions, Events or Resources in serverless.yml or you simply want to deploy all changes within your Service at the same time.
+Use this when you have made changes to your Functions, Events or Resources in ``serverless.yml`` or you simply want to deploy all changes within your Service at the same time.
 
 ```bash
 serverless deploy -s [STAGE NAME] -r [REGION NAME] -v
