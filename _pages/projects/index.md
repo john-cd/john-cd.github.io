@@ -30,6 +30,9 @@ I am in the process of porting a dozen or so repos from BitBucket to GitHub:
 * [DataStructures](https://github.com/john-cd/DataStructures)
     * Basic data structures in C#
     * Modernization to C# 7.0 in progress
+
+* [SimpleFileDeduplication](https://github.com/john-cd/SimpleFileDeduplication)
+    * Demo that traverses a large directory structure as fast as possible and reports duplicate files (files with the same content). Illustrates hashing, lazy evaluation of generators, Streams, Bloom filter, lock-free multi-threaded programming, and asynchronous interleaving.
     
 * [LRUcache](https://github.com/john-cd/LRUcache)
     * Sample implementation of a LRU cache and excuse to test C# 7.0's newest features
