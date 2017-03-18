@@ -57,7 +57,7 @@ $ git config --global user.email "your_email@youremail.com"
 git add <file>
 ```
 
-- Or stage all changes in <directory> for the next commit:
+- Or stage all changes in `<directory>` for the next commit:
 
 ```bash
 git add <directory>  # usually '.' for current directory
@@ -133,19 +133,19 @@ Branches are just pointers to commits.
 git branch
 ```
 
-- Create a new branch called <branch>. 
+- Create a new branch called ``<branch>``. 
 
 ```bash
 git branch <branch>
 ```
 
-This does not check out the new branch. you need:
+This does not check out the new branch. You need:
 
 ```bash
 git checkout <existing-branch>
 ```
 
-Or direcly create-and-check out <new-branch>.
+Or direcly create-and-check out ``<new-branch>``.
 
 ```bash
 git checkout -b <new-branch>
@@ -165,7 +165,7 @@ git merge <branch>
 
 - Undo any undesired changes
 
-Generate a new commit that undoes all of the changes introduced in <commit>, then apply it to the current branch
+Generate a new commit that undoes all of the changes introduced in ``<commit>``, then apply it to the current branch
 
 ```bash
 git revert <commit>
@@ -192,7 +192,7 @@ git remote add <name> <url>  # often "origin"
 git remote rm <name>         # delete
 ```
 
-- Fetch the specified remote’s copy of the current branch and immediately merge it into the local copy. This is the same as git fetch <remote> followed by git merge origin/<current-branch>.
+- Fetch the specified remote’s copy of the current branch and immediately merge it into the local copy. This is the same as ``git fetch <remote>`` followed by ``git merge origin/<current-branch>``.
 
 ```bash
 git pull <remote>
@@ -210,7 +210,7 @@ git pull --rebase <remote>
 git push <remote> <branch>
 ```
 
-- Pushes the current branch to the remote server and links the local branch to the remote so next time you can do git pull or git push
+- Pushes the current branch to the remote server and links the local branch to the remote so next time you can do ``git pull`` or ``git push``.
 
 ```bash
 git push -u origin <branch>
@@ -266,7 +266,7 @@ git add <file>
 git commit -m "Finish a feature"
 ```
 
-* Merge in the new-feature branch
+* Merge in the ``new-feature`` branch
 
 ```bash
 git checkout master
@@ -274,7 +274,7 @@ git merge new-feature
 git branch -d new-feature
 ```
 
-### Push and Pull from a Centralized Repo
+### Push and pull from a centralized repo
 
 * To push the master branch to the central repo:
 
@@ -299,7 +299,7 @@ git push origin master
 
 ### Create a central Repo
 
-The --bare flag creates a repository that doesn’t have a working directory, making it impossible to edit files and commit changes in that repository. Central repositories should always be created as bare repositories because pushing branches to a non-bare repository has the potential to overwrite changes.
+The ``--bare`` flag creates a repository that doesn’t have a working directory, making it impossible to edit files and commit changes in that repository. Central repositories should always be created as bare repositories because pushing branches to a non-bare repository has the potential to overwrite changes.
 
 ```bash
 $ git init --bare foobar.git  
