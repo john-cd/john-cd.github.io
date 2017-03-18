@@ -7,14 +7,14 @@ tags: SQL RDBMS
 
 ## DML: SELECT
 
-Filter:
+*Filter*:
 
 ```SQL
 SELECT LastName, FirstName, Address FROM Persons
 WHERE Address IS NULL
 ```
 
-Like:
+*Like*:
 
 ```SQL
 SELECT * FROM Customers
@@ -111,7 +111,7 @@ VALUES ('Cardinal', 'Stavanger', 'Norway');
 
 *Insert from select*:
 
-```
+```SQL
 INSERT INTO table2(column_name(s))
 SELECT column_name(s)
 FROM table1;
