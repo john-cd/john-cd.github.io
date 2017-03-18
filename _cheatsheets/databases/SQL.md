@@ -5,28 +5,18 @@ tags: SQL RDBMS
 ---
 # SQL Cheatsheet
 
-## -- DML: SELECT
+## DML: SELECT
+
+Filter:
 
 ```SQL
-SELECT * FROM Customers
-ORDER BY Country DESC;
+SELECT LastName, FirstName, Address FROM Persons
+WHERE Address IS NULL
+```
 
-SELECT * FROM Customers
-ORDER BY Country,CustomerName;
+Like:
 
-SELECT TOP number|percent column_name(s)
-FROM table_name;
-
-SELECT TOP 2 * FROM Customers;
-
-SELECT TOP 50 PERCENT * FROM Customers;
-
--- Oracle Syntax:
-
-SELECT column_name(s)
-FROM table_name
-WHERE ROWNUM <= number;
-
+```SQL
 SELECT * FROM Customers
 WHERE City LIKE 's%';
 
@@ -35,13 +25,51 @@ WHERE Country LIKE '%land%';
 
 SELECT * FROM Customers
 WHERE Country NOT LIKE '%land%';
+```
 
+*Sort*:
+
+```SQL
+SELECT * FROM Customers
+ORDER BY Country DESC;
+
+SELECT * FROM Customers
+ORDER BY Country, CustomerName;
+```
+
+*Limit*:
+
+```SQL
+SELECT TOP number|percent column_name(s)
+FROM table_name;
+
+-- Examples:
+SELECT TOP 2 * FROM Customers;
+
+SELECT TOP 50 PERCENT * FROM Customers;
+```
+
+*Oracle Syntax*:
+
+```SQL
+SELECT column_name(s)
+FROM table_name
+WHERE ROWNUM <= number;
+```
+
+*Joins*:
+
+```SQL
 SELECT Customers.CustomerName, Orders.OrderID
 FROM Customers
 FULL OUTER JOIN Orders
-ON Customers.CustomerID=Orders.CustomerID
+ON Customers.CustomerID = Orders.CustomerID
 ORDER BY Customers.CustomerName;
+```
 
+*Union*:
+
+```SQL
 SELECT column_name(s) FROM table1
 UNION
 SELECT column_name(s) FROM table2;
@@ -49,19 +77,24 @@ SELECT column_name(s) FROM table2;
 SELECT column_name(s) FROM table1
 UNION ALL
 SELECT column_name(s) FROM table2;
+```
 
+*Select Into*:
+
+```SQL
 SELECT column_name(s)
 INTO newtable [IN externaldb]
 FROM table1;
+```
 
-SELECT LastName,FirstName,Address FROM Persons
-WHERE Address IS NULL
+*Formula*:
 
-SELECT ProductName,UnitPrice*(UnitsInStock+ISNULL(UnitsOnOrder,0))
+```SQL
+SELECT ProductName, UnitPrice*(UnitsInStock+ISNULL(UnitsOnOrder,0))
 FROM Products
 ```
 
-## -- DML: INSERT
+## DML: INSERT
 
 ```SQL
 INSERT INTO table_name
@@ -70,32 +103,41 @@ VALUES (value1,value2,value3,...);
 INSERT INTO table_name (column1,column2,column3,...)
 VALUES (value1,value2,value3,...);
 
+-- Example:
+
 INSERT INTO Customers (CustomerName, City, Country)
 VALUES ('Cardinal', 'Stavanger', 'Norway');
+```
 
-INSERT INTO table2
-(column_name(s))
+*Insert from select*:
+
+```
+INSERT INTO table2(column_name(s))
 SELECT column_name(s)
 FROM table1;
+
+-- Example:
 
 INSERT INTO Customers (CustomerName, Country)
 SELECT SupplierName, Country FROM Suppliers
 WHERE Country='Germany';
 ```
 
-## -- DML: UPDATE
+## DML: UPDATE
 
 ```SQL
 UPDATE table_name
 SET column1=value1,column2=value2,...
 WHERE some_column=some_value;
 
+-- Example:
+
 UPDATE Customers
 SET ContactName='Alfred Schmidt', City='Hamburg'
 WHERE CustomerName='Alfreds Futterkiste';
 ```
 
-## -- DML: DELETE
+## DML: DELETE
 
 ```SQL
 DELETE FROM table_name
@@ -105,20 +147,19 @@ DELETE FROM Customers
 WHERE CustomerName='Alfreds Futterkiste' AND ContactName='Maria Anders';
 ```
 
-## -- Databases
+## Databases
 
 ```SQL
 CREATE DATABASE my_db;
-DROP DATABASE database_name
+
+DROP DATABASE my_db;
 ```
 
-## -- Tables
+## Tables
+
+*Create*:
 
 ```SQL
-DROP TABLE table_name
-
-TRUNCATE TABLE table_name
-
 CREATE TABLE table_name
 (
 column_name1 data_type(size),
@@ -134,7 +175,11 @@ column_name2 data_type(size) constraint_name,
 column_name3 data_type(size) constraint_name,
 ....
 );
+```
 
+-- Examples
+
+```SQL
 CREATE TABLE Persons
 (
 P_Id int NOT NULL UNIQUE,
@@ -151,20 +196,34 @@ LastName varchar(255) NOT NULL,
 FirstName varchar(255),
 Address varchar(255),
 City varchar(255),
-CONSTRAINT uc_PersonID UNIQUE (P_Id,LastName)
+CONSTRAINT uc_PersonID UNIQUE (P_Id, LastName)
 )
+```
 
+```SQL
 ALTER TABLE Persons
 ADD CONSTRAINT uc_PersonID UNIQUE (P_Id,LastName)
 
 ALTER TABLE Persons
 DROP CONSTRAINT uc_PersonID
+```
 
+*Temporary Table*:
+
+```SQL
 CREATE TABLE #MyTempTable (cola INT PRIMARY KEY);
 INSERT INTO #MyTempTable VALUES (1);
 ```
 
-## -- PRIMARY KEY constraint
+*Drop / Truncate*:
+
+```SQL
+DROP TABLE table_name
+
+TRUNCATE TABLE table_name
+```
+
+## PRIMARY KEY constraint
 
 ```SQL
 CREATE TABLE Persons
@@ -183,17 +242,17 @@ LastName varchar(255) NOT NULL,
 FirstName varchar(255),
 Address varchar(255),
 City varchar(255),
-CONSTRAINT pk_PersonID PRIMARY KEY (P_Id,LastName)
+CONSTRAINT PK_PersonID PRIMARY KEY (P_Id,LastName)
 )
 
 ALTER TABLE Persons
-ADD CONSTRAINT pk_PersonID PRIMARY KEY (P_Id,LastName)
+ADD CONSTRAINT PK_PersonID PRIMARY KEY (P_Id,LastName)
 
 ALTER TABLE Persons
-DROP CONSTRAINT pk_PersonID
+DROP CONSTRAINT PK_PersonID
 ```
 
-## -- FOREIGN KEY constraints
+## FOREIGN KEY constraints
 
 ```SQL
 CREATE TABLE Orders
@@ -209,10 +268,12 @@ O_Id int NOT NULL,
 OrderNo int NOT NULL,
 P_Id int,
 PRIMARY KEY (O_Id),
-CONSTRAINT fk_PerOrders FOREIGN KEY (P_Id)
+CONSTRAINT FK_PerOrders FOREIGN KEY (P_Id)
 REFERENCES Persons(P_Id)
 )
+```
 
+```SQL
 ALTER TABLE Orders
 ADD FOREIGN KEY (P_Id)
 REFERENCES Persons(P_Id)
@@ -226,7 +287,7 @@ ALTER TABLE Orders
 DROP CONSTRAINT fk_PerOrders
 ```
 
-## -- CHECK constraints
+## CHECK Constraints
 
 ```SQL
 CREATE TABLE Persons
@@ -247,15 +308,17 @@ Address varchar(255),
 City varchar(255),
 CONSTRAINT chk_Person CHECK (P_Id>0 AND City='Sandnes')
 )
-
-ALTER TABLE Persons
-ADD CONSTRAINT chk_Person CHECK (P_Id>0 AND City='Sandnes')
-
-ALTER TABLE Persons
-DROP CONSTRAINT chk_Person
 ```
 
-## -- DEFAULT constraints
+```SQL
+ALTER TABLE Persons
+ADD CONSTRAINT CHK_Person CHECK (P_Id>0 AND City='Sandnes')
+
+ALTER TABLE Persons
+DROP CONSTRAINT CHK_Person
+```
+
+## DEFAULT Constraints
 
 ```SQL
 CREATE TABLE Orders
@@ -265,32 +328,41 @@ OrderNo int NOT NULL,
 P_Id int,
 OrderDate date DEFAULT GETDATE()
 )
+```
 
+```SQL
 ALTER TABLE Persons
-ALTER COLUMN City SET DEFAULT 'SANDNES'
+ALTER COLUMN City SET DEFAULT 'SEATTLE'
 
 ALTER TABLE Persons
 ALTER COLUMN City DROP DEFAULT
+```
+
+## Index
+
+```SQL
+CREATE UNIQUE INDEX index_name
+ON table_name (column_name)
 
 CREATE INDEX index_name
 ON table_name (column_name1, col_name2)
 
+-- Example:
+
 CREATE INDEX PIndex
 ON Persons (LastName, FirstName)
-
-CREATE UNIQUE INDEX index_name
-ON table_name (column_name)
-
-DROP INDEX table_name.index_name
-
-USE AdventureWorks2012;
-GO
-DROP INDEX IX_ProductVendor_BusinessEntityID
-    ON Purchasing.ProductVendor;
-GO
 ```
 
-## -- Add / drop / alter column in table
+```SQL
+DROP INDEX table_name.index_name
+
+-- Example:
+
+DROP INDEX IX_ProductVendor_BusinessEntityID
+    ON Purchasing.ProductVendor;
+```
+
+## Add / drop / alter column in table
 
 ```SQL
 ALTER TABLE table_name
@@ -303,7 +375,7 @@ ALTER TABLE table_name
 ALTER COLUMN column_name datatype
 ```
 
-## -- Autoincrement
+## Autoincrement
 
 ``` SQL
 CREATE TABLE Persons
@@ -314,7 +386,11 @@ FirstName varchar(255),
 Address varchar(255),
 City varchar(255)
 )
+```
 
+Example:
+
+```SQL
 CREATE TABLE dbo.PurchaseOrderDetail
 (
     PurchaseOrderID int NOT NULL
@@ -340,57 +416,59 @@ CREATE TABLE dbo.PurchaseOrderDetail
 ON PRIMARY;
 ```
 
-## -- Views
+## Views
 
 ```SQL
 CREATE VIEW view_name AS
 SELECT column_name(s)
 FROM table_name
 WHERE condition
+```
 
-CREATE VIEW [Products Above Average Price] AS
-SELECT ProductName,UnitPrice
-FROM Products
-WHERE UnitPrice>(SELECT AVG(UnitPrice) FROM Products)
-
-SELECT * FROM [Products Above Average Price]
-
-CREATE VIEW [Category Sales For 1997] AS
-SELECT DISTINCT CategoryName,Sum(ProductSales) AS CategorySales
-FROM [Product Sales for 1997]
-GROUP BY CategoryName
-
+```SQL
 CREATE OR REPLACE VIEW view_name AS
 SELECT column_name(s)
 FROM table_name
 WHERE condition
+```
 
+```SQL
 DROP VIEW view_name
 ```
 
-# -- Dates
+*Examples*:
 
-Function / Description
+```SQL
+CREATE VIEW [Products Above Average Price] AS
+SELECT ProductName,UnitPrice
+FROM Products
+WHERE UnitPrice > (SELECT AVG(UnitPrice) FROM Products)
 
-	GETDATE()
+SELECT * FROM [Products Above Average Price]
+```
 
-Returns the current date and time
+```SQL
+CREATE VIEW [Category Sales For 1997] AS
+SELECT DISTINCT CategoryName, Sum(ProductSales) AS CategorySales
+FROM [Product Sales for 1997]
+GROUP BY CategoryName
+```
 
-	DATEPART()
+## Dates
 
-Returns a single part of a date/time
+```SQL
+GETDATE()  -- Returns the current date and time
 
-	DATEADD()
+DATEPART() -- Returns a single part of a date/time
 
-Adds or subtracts a specified time interval from a date
+DATEADD()  -- Adds or subtracts a specified time interval from a date
 
-	DATEDIFF()
+DATEDIFF() -- Returns the time between two dates
 
-Returns the time between two dates
+CONVERT()  -- Displays date/time data in different formats
+```
 
-	CONVERT()
-
-Displays date/time data in different formats
+*Example*:
 
 ```SQL
 CREATE TABLE Orders
@@ -417,7 +495,6 @@ CONVERT(VARCHAR(10),GETDATE(),110)
 ```
 
 ## SQL Server Data Types
-
 
 **Data type / Description / Storage**
 
@@ -465,7 +542,7 @@ Variable width binary string. Maximum 2GB
 `image`
 Variable width binary string. Maximum 2GB
 
-Number types:
+### Number types
 
 `tinyint`
 Allows whole numbers from 0 to 255
@@ -485,22 +562,16 @@ Allows whole numbers between -9,223,372,036,854,775,808 and 9,223,372,036,854,77
 
 `decimal(p,s)`
 Fixed precision and scale numbers.
-Allows numbers from -10^38 +1 to 10^38 1.
+Allows numbers from -10^38 +1 to 10^38.
 
-The p parameter indicates the maximum total number of digits that can be stored (both to the left and to the right of the decimal point). p must be a value from 1 to 38. Default is 18.
-
-The s parameter indicates the maximum number of digits stored to the right of the decimal point. s must be a value from 0 to p. Default value is 0
-
+The p parameter indicates the maximum total number of digits that can be stored (both to the left and to the right of the decimal point). p must be a value from 1 to 38. Default is 18. The s parameter indicates the maximum number of digits stored to the right of the decimal point. s must be a value from 0 to p. Default value is 0.
 5-17 bytes
 
 `numeric(p,s)`
 Fixed precision and scale numbers.
-Allows numbers from -10^38 +1 to 10^38 1.
+Allows numbers from -10^38 +1 to 10^38.
 
-The p parameter indicates the maximum total number of digits that can be stored (both to the left and to the right of the decimal point). p must be a value from 1 to 38. Default is 18.
-
-The s parameter indicates the maximum number of digits stored to the right of the decimal point. s must be a value from 0 to p. Default value is 0
-
+The p parameter indicates the maximum total number of digits that can be stored (both to the left and to the right of the decimal point). p must be a value from 1 to 38. Default is 18. The s parameter indicates the maximum number of digits stored to the right of the decimal point. s must be a value from 0 to p. Default value is 0.
 5-17 bytes
 
 `smallmoney`
@@ -520,7 +591,7 @@ The n parameter indicates whether the field should hold 4 or 8 bytes. float(24) 
 Floating precision number data from -3.40E + 38 to 3.40E + 38
 4 bytes
 
-Date types:
+### Date types
 
 `datetime`
 From January 1, 1753 to December 31, 9999 with an accuracy of 3.33 milliseconds
@@ -549,7 +620,7 @@ The same as datetime2 with the addition of a time zone offset
 `timestamp`
 Stores a unique number that gets updated every time a row gets created or modified. The timestamp value is based upon an internal clock and does not correspond to real time. Each table may have only one timestamp variable
 
-### Other data types:
+### Other data types
 
 `sql_variant`
 Stores up to 8,000 bytes of data of various data types, except text, ntext, and timestamp
@@ -566,18 +637,20 @@ Stores a reference to a cursor used for database operations
 `table`
 Stores a result-set for later processing
 
-## -- SQL Aggregate Functions
+## SQL Aggregate Functions
 
 SQL aggregate functions return a single value, calculated from values in a column.
 
 Useful aggregate functions:
 
-* `AVG()` - Returns the average value
+* `AVG()`   - Returns the average value
 * `COUNT()` - Returns the number of rows
-* `TOP 1`
-* `MAX()` - Returns the largest value
-* `MIN()` - Returns the smallest value
-* `SUM()` - Returns the sum
+* `TOP 1`   - Single sample
+* `MAX()`   - Returns the largest value
+* `MIN()`   - Returns the smallest value
+* `SUM()`   - Returns the sum
+
+Examples:
 
 ```SQL
 SELECT COUNT(DISTINCT column_name) FROM table_name;
@@ -610,7 +683,7 @@ GROUP BY LastName
 HAVING COUNT(Orders.OrderID) > 10;
 ```
 
-## -- SQL Scalar functions
+## SQL Scalar functions
 
 * Converts a field to upper case: SELECT UPPER(column_name) FROM table_name;
 * Converts a field to lower case: SELECT LOWER(column_name) FROM table_name;
@@ -620,10 +693,12 @@ HAVING COUNT(Orders.OrderID) > 10;
 * NOW() - Returns the current system date and time
 * FORMAT() - Formats how a field is to be displayed
 
-	SELECT ProductName, ROUND(Price,0) AS RoundedPrice
-	FROM Products;
+```SQL
+SELECT ProductName, ROUND(Price,0) AS RoundedPrice
+FROM Products;
+```
 
-## -- Variables
+## Variables
 
 ```SQL
 DECLARE @myvar char(20);
@@ -631,7 +706,7 @@ SET @myvar = 'This is a test';
 SELECT @myvar;
 ```
 
-## -- Scalar Function
+## Scalar Function
 
 ```SQL
 CREATE FUNCTION FunctionName
@@ -652,17 +727,14 @@ RETURN @Result
 END
 ```
 
-## -- TABLE-VALUE FUNCTION
+## Table Value Function
 
 ```SQL
-USE AdventureWorks
-GO
-
 IF OBJECT_ID (N'dbo.EmployeeByID' ) IS NOT NULL
-   DROP FUNCTION dbo .EmployeeByID
+   DROP FUNCTION dbo.EmployeeByID
 GO
 
-CREATE FUNCTION dbo. EmployeeByID(@InEmpID int)
+CREATE FUNCTION dbo.EmployeeByID(@InEmpID int)
 RETURNS @retFindReports TABLE
 (
 	-- columns returned by the function
@@ -680,9 +752,9 @@ BEGIN
 		e.EmployeeID ,
 		1 ,
 		CONVERT(varchar (255), c. FirstName + ' ' + c .LastName)
-	 FROM HumanResources .Employee AS e
-		  JOIN Person .Contact AS c ON e.ContactID = c.ContactID
-	 WHERE e .EmployeeID = @InEmpID
+	 FROM HumanResources.Employee AS e
+		  JOIN Person.Contact AS c ON e.ContactID = c.ContactID
+	 WHERE e.EmployeeID = @InEmpID
    UNION ALL
 	 SELECT CONVERT (varchar( 255), REPLICATE ( '| ' , EmployeeLevel) +
 		c.FirstName + ' ' + c. LastName),
@@ -691,8 +763,8 @@ BEGIN
 		EmployeeLevel + 1,
 		CONVERT ( varchar(255 ), RTRIM (Sort) + '| ' + FirstName + ' ' +
 				 LastName)
-	 FROM HumanResources .Employee as e
-		  JOIN Person .Contact AS c ON e.ContactID = c.ContactID
+	 FROM HumanResources.Employee as e
+		  JOIN Person.Contact AS c ON e.ContactID = c.ContactID
 		  JOIN DirectReports AS d ON e. ManagerID = d. EmployeeID
 	)
    -- copy the required columns to the result of the function
@@ -706,7 +778,7 @@ END
 GO
 ```
 
-## -- STORED PROCEDURE
+## Stored Procedure
 
 ```SQL
 CREATE PROCEDURE ProcedureName
@@ -725,7 +797,7 @@ END
 GO
 ```
 
-## Self-join:
+## Self-join
 
 Q. Here's the data in a table 'orders'
 
