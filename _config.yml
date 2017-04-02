@@ -95,9 +95,9 @@ paginate_path: /page:num
 # Not everything is a post or a page. Maybe you want to document the various methods in your open source project, members of a team, or talks at a conference. 
 # Collections allow you to define a new type of document that behave like Pages or Posts do normally, but also have their own unique properties and namespace.
 
-collections:
-  cheatsheets:
-    output: true
+# collections:
+#  cheatsheets:
+#    output: true
 
 # The corresponding folder is <source>/_cheatsheets
 
@@ -107,12 +107,12 @@ collections:
 
 # Default attributes can also be set for a collection
 defaults:
-  - scope:
-      path: ""  # all pages
-      type: cheatsheets
-    values:
-      layout: inner
-      category: "misc"
+#  - scope:
+#      path: ""  # all pages
+#      type: cheatsheets
+#    values:
+#      layout: inner
+#      category: "misc"
   - scope:
       path: ""  # all pages
       type: posts
