@@ -6,7 +6,7 @@ featured_image: '/img/assets/convolutional_network_layer.png'
 comments: true
 ---
 
-I am teaching myself deep learning (DL), starting with the excellent [CNN Stanford course](http://cs231n.stanford.edu/) and working with the [Keras](http://keras.io) platform.
+I am teaching myself deep learning (DL), starting with the excellent [CNN Stanford course](http://cs231n.stanford.edu/) and working with the [Keras](https://keras.io) platform.
 
 I should start by stating that Deep Learning is a rebranding of neural networks (NN). If I compare the state of the art to the 90's, when I first studied NN, what is truly new is our ability to train very complex networks with very large numbers of neurons and many hidden layers, which in turn can learn increasingly abstract representations of the input data. Modern Neural Networks can contain on orders of 100 million parameters (neuron weights) and are made up of 10-20 layers. 
 
