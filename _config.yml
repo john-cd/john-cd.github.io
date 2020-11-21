@@ -36,10 +36,10 @@ exclude: ['exclude', 'test.bat', 'README.md']
 
 ## Plugins
 # whitelist: []
-gems:
-  - jekyll-paginate
-  - jekyll-feed
-  - jekyll-sitemap
+#plugins:
+#  - jekyll-paginate
+#  - jekyll-feed
+#  - jekyll-sitemap
 
 
 ## Conversion / Build Settings
