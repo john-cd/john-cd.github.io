@@ -22,6 +22,6 @@ Theme from [scotch.io](https://github.com/scotch-io)
 
 Copyright (c) 2015-2016 Nicholas Cerminara, scotch.io, LLC
 
-* [Demo](http://scotch-io.github.io)
+* [Demo](https://scotch-io.github.io)
 * [Tutorial](https://scotch.io/tutorials/getting-started-with-jekyll-plus-a-free-bootstrap-3-starter-theme)
 
