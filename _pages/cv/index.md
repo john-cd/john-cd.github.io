@@ -14,7 +14,7 @@ sjncd2000 at gmail.com -- based in Seattle, WA (NOT open to relocation at the mo
 
 ## Senior Technology Manager | Data Scientist | Architect
 
-### 15+ years of post-Ph.D. experience
+### 16+ years of post-Ph.D. experience
 
 
 ----------------------------------------------------------------------------------------------------------------------
@@ -61,7 +61,15 @@ sjncd2000 at gmail.com -- based in Seattle, WA (NOT open to relocation at the mo
 
 ### **WORK EXPERIENCE**
 
-#### 2014 – Pres.    **Data Scientist**     Salesify
+#### 2017 - Pres.   **Principal Product Manager, Big Data**     Inspur 
+
+**Responsibilities:**
+
+
+
+
+
+#### 2014 – 2017    **Data Scientist**     Salesify
 
 Salesify is a B2B sales lead generation and customer intelligence
 company (\~1,000 employees in three countries).
