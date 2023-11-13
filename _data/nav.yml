@@ -1,7 +1,4 @@
 main:
-    - { url: '/blog', text: 'Blog' }
-    - { url: '/projects', text: 'Projects' }
     - { url: '/cheatsheets', text: 'Cheatsheets' }
     - { url: '/about', text: 'About' }
-    - { url: '/cv', text: 'CV' }
     - { url: '/contact', text: 'Contact'}
