@@ -12,7 +12,13 @@
 	"forwardPorts": [4000],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "ruby --version"
+	//"postCreateCommand": "ruby --version",
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli:1": {
+			"installDirectlyFromGitHubRelease": true,
+			"version": "latest"
+		}
+	}
 
 	// Configure tool-specific properties.
 	// "customizations": {},
