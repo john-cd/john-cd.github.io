@@ -1,4 +1,0 @@
-main:
-    - { url: '/cheatsheets', text: 'Cheatsheets' }
-    - { url: '/about', text: 'About' }
-    - { url: '/contact', text: 'Contact'}
