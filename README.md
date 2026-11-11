@@ -1,3 +1,4 @@
+<!-- Project overview and local development instructions. -->
 # John Cruchon-Dupeyrat
 
 Personal site for writing and project notes on data engineering, search, machine learning, and software architecture. The site is generated with Zola and the AdiDoks theme, which is pinned as a Git submodule.
@@ -23,6 +24,18 @@ The local preview runs at <http://127.0.0.1:1111/>. Zola writes the production s
 
 ## Check and build
 
+With [Just](https://just.systems/) installed, use the project recipes:
+
+```sh
+just check
+just build
+just preview
+```
+
+The recipes use `python` on Windows and `python3` on Unix-like systems. Set `ZOLA` if Zola is not available on `PATH`.
+
+The equivalent commands are:
+
 ```sh
 zola check
 zola build
@@ -34,7 +47,7 @@ The generated-site check verifies required routes and assets, local links, feed 
 
 ## Publishing
 
-`develop` is the integration branch and `main` is the release branch. GitHub Actions checks pull requests targeting either branch; pushes to `main` deploy the generated artifact to GitHub Pages, while pushes to `develop` only build and validate it. Set the repository's default branch to `develop`, and use **GitHub Actions** as the Pages publishing source. Configure the custom domain `john-cd.com` in repository settings. The site uses `https://john-cd.com` as its canonical base URL and publishes the `CNAME` file with the artifact.
+`develop` is the repository's default integration branch and `main` is the release branch. GitHub Actions checks pull requests targeting either branch; pushes to `main` deploy the generated artifact to GitHub Pages, while pushes to `develop` only build and validate it. Use **GitHub Actions** as the Pages publishing source and configure the custom domain `john-cd.com` in repository settings. The site uses `https://john-cd.com` as its canonical base URL and publishes the `CNAME` file with the artifact.
 
 The Cheatsheets documentation is maintained in the separate [john-cd/cheatsheets repository](https://github.com/john-cd/cheatsheets) and published at <https://john-cd.github.io/cheatsheets/>.
 
