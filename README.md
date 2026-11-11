@@ -32,7 +32,11 @@ just build
 just preview
 ```
 
-The recipes use `python` on Windows and `python3` on Unix-like systems. Set `ZOLA` if Zola is not available on `PATH`.
+The recipes use `python` on Windows and `python3` on Unix-like systems. They require the pinned Zola **0.19.2** release because the theme templates are not compatible with newer versions. Set `ZOLA` to the 0.19.2 executable if another version is first on `PATH`; the recipes check the version before running. For example, in PowerShell:
+
+```powershell
+$env:ZOLA = 'C:\tools\zola-0.19.2\zola.exe'
+```
 
 The equivalent commands are:
 
