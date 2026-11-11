@@ -1,0 +1,44 @@
+PROPRIETARY LICENSE AND AI USE RESTRICTION
+
+Copyright © John Cruchon-Dupeyrat. All rights reserved.
+
+SCOPE
+
+This notice applies only to original material in this repository that John
+Cruchon-Dupeyrat owns or is authorized to license, including original site
+copy, articles, code, and graphics (the “First-Party Materials”). It does not
+apply to the AdiDoks theme in themes/adidoks, or to other third-party material
+that is identified by a separate copyright or license notice. Those materials
+remain governed by their own terms.
+
+LIMITED PERMISSION
+
+You may access and view the public website in an ordinary web browser and link
+to its public page URLs. No other license or permission is granted. Any
+additional use requires prior written permission from the rights holder.
+
+RESTRICTIONS
+
+Without prior written permission, you may not copy, reproduce, download,
+redistribute, publish, adapt, modify, or create derivative works from the
+First-Party Materials, except to the extent applicable law permits that use.
+
+You may not crawl, scrape, harvest, text-mine, or otherwise automatically
+collect the First-Party Materials, or include them in a corpus, dataset,
+training set, or other collection for automated analysis or reuse.
+
+You may not use the First-Party Materials or any part of them to train,
+pre-train, fine-tune, develop, evaluate, benchmark, or improve an artificial
+intelligence or machine-learning system, including a large language model.
+This prohibition also covers creating embeddings or vector indexes, retrieval
+or grounding systems, synthetic data, or other inputs or outputs intended to
+build, operate, or improve such systems.
+
+NO WARRANTY
+
+The First-Party Materials are provided “as is,” without warranties of any
+kind, to the extent permitted by applicable law.
+
+Nothing in this notice waives or limits rights or exceptions that applicable
+law does not allow a rights holder to waive or limit. To request permission
+for another use, contact John through https://john-cd.com/contact/.
