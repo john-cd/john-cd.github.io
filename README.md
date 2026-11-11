@@ -1,7 +1,7 @@
 <!-- Project overview and local development instructions. -->
 # John Cruchon-Dupeyrat
 
-Personal site for writing and project notes on data engineering, search, machine learning, and software architecture. The site is generated with Zola and the AdiDoks theme, which is pinned as a Git submodule.
+Personal site for writing and project notes on data engineering, search, machine learning, and software architecture. The site is generated with Zola and the Linkita theme, pinned as a Git submodule on its `main` branch.
 
 ## Start locally
 
@@ -13,7 +13,7 @@ python3 scripts/serve_site.py
 
 VS Code forwards port 1111 and opens the preview.
 
-To preview outside the container, install Zola **0.19.2**, Python 3, and initialize the theme:
+To preview outside the container, install Zola **0.23.6 or newer**, Python 3, and initialize the theme:
 
 ```sh
 git submodule update --init --recursive
@@ -21,6 +21,8 @@ python scripts/serve_site.py
 ```
 
 The local preview runs at <http://127.0.0.1:1111/>. Zola writes the production site to `public/`.
+
+The site uses [Linkita](https://github.com/salif/linkita), a Zola theme for personal blogs with search, dark mode, author profiles, and projects. Its `main` branch uses Tera 2 and requires Zola 0.23.6 or newer.
 
 ## Check and build
 
@@ -32,10 +34,10 @@ just build
 just preview
 ```
 
-The recipes use `python` on Windows and `python3` on Unix-like systems. They require the pinned Zola **0.19.2** release because the theme templates are not compatible with newer versions. Set `ZOLA` to the 0.19.2 executable if another version is first on `PATH`; the recipes check the version before running. For example, in PowerShell:
+The recipes use `python` on Windows and `python3` on Unix-like systems. They require Zola **0.23.6 or newer** because Linkita uses Tera 2 components. Set `ZOLA` to a supported executable if an older version is first on `PATH`; the recipes check the version before running. For example, in PowerShell:
 
 ```powershell
-$env:ZOLA = 'C:\tools\zola-0.19.2\zola.exe'
+$env:ZOLA = 'C:\tools\zola-0.23.6\zola.exe'
 ```
 
 The equivalent commands are:
@@ -59,4 +61,4 @@ To roll back a faulty deployment, revert the source commit and publish the rever
 
 ## Content and license
 
-The original blog drafts remain unpublished until reviewed. The repository's first-party content is proprietary. The custom terms in [LICENSE](LICENSE) reserve reuse rights and prohibit automated extraction and AI or machine-learning training and related uses. The AdiDoks theme submodule and any separately identified third-party material retain their own licenses.
+The original blog drafts remain unpublished until reviewed. The repository's first-party content is proprietary. The custom terms in [LICENSE](LICENSE) reserve reuse rights and prohibit automated extraction and AI or machine-learning training and related uses. The Linkita theme submodule and any separately identified third-party material retain their own licenses.

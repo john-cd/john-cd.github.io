@@ -1,5 +1,5 @@
-{# Custom RSS feed template for Zola's configured blog section. #}
 <?xml version="1.0" encoding="utf-8"?>
+{# Custom RSS feed template for Zola's configured blog section. #}
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>{{ config.title | escape_xml | safe }}</title>

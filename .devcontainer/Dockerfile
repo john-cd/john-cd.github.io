@@ -1,8 +1,8 @@
-# Development image with a checksum-verified, pinned Zola binary.
+# Development image with a checksum-verified Zola version supported by Linkita.
 FROM mcr.microsoft.com/devcontainers/base:ubuntu-24.04
 
-ARG ZOLA_VERSION=0.19.2
-ARG ZOLA_SHA256=0798e69b86c628ddcb264ebd86c8cc8dce7670b9049060bf94faa73f6857cd9c
+ARG ZOLA_VERSION=0.23.6
+ARG ZOLA_SHA256=8f5132b3522412d04e395e0b25f6d68613ad272a873e54a2b3ebf664873024a4
 
 LABEL org.opencontainers.image.source="https://github.com/john-cd/john-cd.github.io"
 

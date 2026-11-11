@@ -1,4 +1,5 @@
-# The AdiDoks theme is pinned as a Git submodule.
-[submodule "themes/adidoks"]
-	path = themes/adidoks
-	url = https://github.com/aaranxu/adidoks.git
+# Linkita stays on its Zola 0.23-compatible main branch.
+[submodule "themes/linkita"]
+	path = themes/linkita
+	url = https://github.com/salif/linkita.git
+	branch = main

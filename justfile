@@ -4,7 +4,7 @@
 set shell := ["powershell.exe", "-NoLogo", "-Command"]
 
 python := if os_family() == "windows" { "python" } else { "python3" }
-# Use only the Zola version tested with this pinned theme.
+# Require the minimum Zola version supported by the pinned Linkita theme.
 zola := env("SITE_ZOLA_BIN", env("ZOLA", "zola"))
 python_command := if os_family() == "windows" { "& " + quote(python) } else { quote(python) }
 zola_command := if os_family() == "windows" { "& " + quote(zola) } else { quote(zola) }

@@ -1,93 +1,57 @@
-# Zola site metadata and AdiDoks theme configuration.
+# Site metadata and configuration for the Linkita Zola theme.
 base_url = "https://john-cd.com"
 title = "John Cruchon-Dupeyrat"
 description = "Writing and project notes on data engineering, search, machine learning, and software architecture."
 default_language = "en"
-theme = "adidoks"
-compile_sass = true
+theme = "linkita"
+compile_sass = false
 generate_feeds = true
 feed_filenames = ["atom.xml", "feed.xml"]
 build_search_index = true
 minify_html = false
+author = "john-cd"
 
 [search]
+index_format = "elasticlunr_javascript"
 include_title = true
 include_description = true
 include_content = true
 
 [extra]
-author = "S. John CD"
-github = "https://github.com/john-cd"
-is_netlify = false
-language_code = "en-US"
-theme_color = "#1e66c8"
-title_separator = "|"
-title_addition = "Personal site"
-timeformat = "%Y-%m-%d %H:%M:%S"
-timezone = "UTC"
-edit_page = false
-docs_repo = "https://github.com/john-cd/john-cd.github.io"
-repo_branch = "main"
+header_menu_name = "main"
+header_buttons = ["site_title", "theme_button", "search_button"]
+title_separator = " | "
 math = false
-library = "katex"
+mermaid = false
+comment = false
+toc = true
+page_info = [{ when = "date" }, { when = "reading_time" }, { when = "authors" }]
 
-[extra.open]
-enable = true
-image = "img/social-card.png"
-og_locale = "en_US"
+[extra.languages.en]
+locale = "en-US"
+date_format = "y MMM d"
 
-[extra.schema]
-type = "Person"
-github = "https://github.com/john-cd"
-section = "blog"
-site_links_search_box = false
+[extra.profiles.john-cd]
+name = "John Cruchon-Dupeyrat"
+bio = "Writing on data engineering, search, machine learning, and software architecture."
+og_image = "img/social-card.png"
+og_image_alt = "John Cruchon-Dupeyrat — data engineering, search, and software architecture"
+social = [
+  { name = "github", url = "https://github.com/john-cd" },
+  { name = "rss", url = "@base/atom.xml" },
+]
 
-[[extra.menu.main]]
-name = "About"
-section = "about"
-url = "/about/"
-weight = 10
-
-[[extra.menu.main]]
-name = "Blog"
-section = "blog"
-url = "/blog/"
-weight = 20
-
-[[extra.menu.main]]
-name = "Projects"
-section = "projects"
-url = "/projects/"
-weight = 30
-
-[[extra.menu.main]]
-name = "CV"
-section = "cv"
-url = "/cv/"
-weight = 40
-
-[[extra.menu.main]]
-name = "Contact"
-section = "contact"
-url = "/contact/"
-weight = 50
-
-[[extra.menu.main]]
-name = "Cheatsheets"
-section = "cheatsheets"
-url = "/cheatsheets/"
-weight = 60
-
-[[extra.menu.social]]
-name = "GitHub"
-pre = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>'
-url = "https://github.com/john-cd"
-weight = 20
+[extra.menus]
+main = [
+  { name = "About", url = "@base/about/" },
+  { name = "Blog", url = "@base/blog/" },
+  { name = "Projects", url = "@base/projects/" },
+  { name = "CV", url = "@base/cv/" },
+  { name = "Contact", url = "@base/contact/" },
+  { name = "Cheatsheets", url = "https://john-cd.github.io/cheatsheets/" },
+]
 
 [extra.footer]
-info = 'Powered by <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/aaranxu/adidoks">AdiDoks</a>'
-
-[[extra.footer.nav]]
-name = "Privacy"
-url = "/privacy-policy/"
-weight = 10
+since = 2026
+copyright = "&copy;&nbsp;$YEAR John Cruchon-Dupeyrat. All rights reserved."
+privacy_policy_url = "@base/privacy-policy/"

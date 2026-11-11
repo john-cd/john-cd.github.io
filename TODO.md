@@ -13,7 +13,8 @@ Reviewed on 2026-11-11. Remote `develop` and `main` branches were created from `
 
 ## Completed in this working tree
 
-- Pinned the build to Zola 0.19.2 with the AdiDoks submodule checkout, PR checks for `develop` and `main`, Pages deployment from `main`, and generated-route/link/asset checks.
+- Replaced AdiDoks with the Linkita theme, migrated the site configuration and navigation, and set Zola 0.23.6 as the supported minimum for local, CI, and container builds.
+- Kept PR checks for `develop` and `main`, Pages deployment from `main`, and generated-route/link/asset checks in place after the theme migration.
 - Created `develop` and `main` on origin, set `develop` as the GitHub default branch, and pushed the focused site commits to the integration branch.
 - Replaced the theme demo homepage, sample docs, author pages, and five sample posts. Preserved the old feed filenames with valid empty feeds while no posts are public, and kept the original articles as drafts.
 - Restored the historical `john-cd.com` CNAME and canonical URL, retained `/cheatsheets/` as the separate project route, and added site-owned metadata, social image, and icon assets.

@@ -21,10 +21,11 @@ REQUIRED_FILES = {
     "sitemap.xml",
     "robots.txt",
     "search_index.en.js",
-    "main.css",
-    "js/main.js",
-    "js/search.js",
-    "plugins/elasticlunr.min.js",
+    "main.min.css",
+    "icons.css",
+    "admonition.css",
+    "js/zola-theme.min.js",
+    "elasticlunr.min.js",
     "about/index.html",
     "blog/index.html",
     "projects/index.html",
@@ -36,6 +37,7 @@ REQUIRED_FILES = {
     "CNAME",
     "site.webmanifest",
     "favicon.ico",
+    "android-icon.png",
     "favicon-16x16.png",
     "favicon-32x32.png",
     "apple-touch-icon.png",
@@ -168,6 +170,7 @@ def main() -> None:
 
     html_files = sorted(PUBLIC.rglob("*.html"))
     ids_by_file: dict[Path, set[str]] = {}
+    linked_stylesheets: set[Path] = set()
     local_reference_count = 0
     for html_file in html_files:
         parser = HTMLReferences()
@@ -178,8 +181,16 @@ def main() -> None:
         for reference in parser.references:
             if check_reference(reference, html_file, ids_by_file):
                 local_reference_count += 1
+                parsed = urlsplit(reference)
+                if parsed.path.lower().endswith(".css"):
+                    if parsed.path.startswith("/"):
+                        linked_stylesheets.add(output_path_for_url(parsed.path, html_file))
+                    else:
+                        linked_stylesheets.add((html_file.parent / unquote(parsed.path)).resolve())
 
-    for css_file in PUBLIC.rglob("*.css"):
+    # Only parse stylesheets that pages actually load; unused third-party CSS
+    # assets may contain optional font fallbacks that are not bundled.
+    for css_file in sorted(linked_stylesheets):
         css = css_file.read_text(encoding="utf-8")
         for match in re.finditer(r"url\(\s*(['\"]?)(.*?)\1\s*\)", css, re.IGNORECASE):
             reference = match.group(2).strip()

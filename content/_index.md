@@ -4,6 +4,9 @@ title = "John Cruchon-Dupeyrat"
 description = "John's writing on data engineering, search, machine learning, and software architecture."
 generate_feeds = true
 
+[extra]
+profile = "john-cd"
+
 +++
 
 Welcome. This site collects my writing, project notes, and professional background.
