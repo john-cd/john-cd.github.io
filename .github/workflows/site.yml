@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the site and theme
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v7.0.1
         with:
           submodules: recursive
       - name: Install pinned Zola
