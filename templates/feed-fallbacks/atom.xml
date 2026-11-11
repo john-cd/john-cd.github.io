@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title>John Cruchon-Dupeyrat</title>
+  <subtitle>Writing and project notes on data engineering, search, machine learning, and software architecture.</subtitle>
+  <link rel="self" type="application/atom+xml" href="https://john-cd.com/atom.xml" />
+  <link rel="alternate" type="text/html" href="https://john-cd.com/blog/" />
+  <id>https://john-cd.com/</id>
+  <updated>2026-11-11T00:00:00Z</updated>
+  <generator uri="https://www.getzola.org/">Zola</generator>
+</feed>

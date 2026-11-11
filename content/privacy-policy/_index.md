@@ -1,27 +1,12 @@
 +++
-title = "Privacy Policy"
-description = "We do not use cookies and we do not collect any personal data."
-date = 2021-05-01T08:00:00+00:00
-updated = 2020-05-01T08:00:00+00:00
-draft = false
-
-[extra]
-class = "page single"
+title = "Privacy"
+description = "How this personal website handles privacy."
 +++
 
-__TLDR__: We do not use cookies and we do not collect any personal data.
+This personal website is hosted by GitHub Pages. GitHub processes requests to host and deliver these pages. See [GitHub's privacy statement](https://docs.github.com/site-policy/privacy-policies/github-privacy-statement).
 
-## Website visitors
+The site does not use advertising or analytics. Its theme stores your light or dark mode preference in browser local storage. You can clear that preference in your browser settings.
 
-- No personal information is collected.
-- No information is stored in the browser.
-- No information is shared with, sent to or sold to third-parties.
-- No information is shared with advertising companies.
-- No information is mined and harvested for personal and behavioral trends.
-- No information is monetized.
+The Contact page links to Calendly for scheduling. Calendly's privacy practices apply when you follow that link or use its service. See [Calendly's privacy policy](https://calendly.com/privacy).
 
-## Contact us
-
-[Contact us](https://github.com/aaranxu/adidoks) if you have any questions.
-
-Effective Date: _1st May 2021_
+For questions about this site, use the contact link above.

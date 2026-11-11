@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>John Cruchon-Dupeyrat</title>
+    <link>https://john-cd.com/blog/</link>
+    <description>Writing and project notes on data engineering, search, machine learning, and software architecture.</description>
+    <atom:link rel="self" type="application/rss+xml" href="https://john-cd.com/feed.xml" />
+    <language>en</language>
+    <generator>Zola</generator>
+  </channel>
+</rss>

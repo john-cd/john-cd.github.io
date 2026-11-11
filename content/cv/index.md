@@ -49,12 +49,6 @@ description = "Curriculum Vitae"
 
 #### 2017 - Pres.   **Principal Product Manager, Big Data**     Inspur
 
-**Responsibilities:**
-
-
-
-
-
 #### 2014 – 2017    **Data Scientist**     Salesify
 
 Salesify is a B2B sales lead generation and customer intelligence

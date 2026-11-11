@@ -1,0 +1,69 @@
+{% macro resource() %}
+  <link rel="preload" as="font" href="{{ get_url(path='fonts/vendor/jost/jost-v4-latin-regular.woff2') | safe }}" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="{{ get_url(path='fonts/vendor/jost/jost-v4-latin-700.woff2') | safe }}" type="font/woff2" crossorigin>
+{% endmacro %}
+
+{% macro stylesheet() %}
+  <link rel="stylesheet" href="{{ get_url(path='main.css') | safe }}">
+{% endmacro %}
+
+{% macro favicons() %}
+  <meta name="theme-color" content="{{ config.extra.theme_color | default(value='#1e66c8') }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ get_url(path='apple-touch-icon.png') | safe }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ get_url(path='favicon-32x32.png') | safe }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ get_url(path='favicon-16x16.png') | safe }}">
+  <link rel="manifest" href="{{ get_url(path='site.webmanifest') | safe }}">
+  <link rel="alternate" type="application/atom+xml" title="Atom feed" href="{{ get_url(path='atom.xml', trailing_slash=false) | safe }}">
+  <link rel="alternate" type="application/rss+xml" title="RSS feed" href="{{ get_url(path='feed.xml', trailing_slash=false) | safe }}">
+{% endmacro %}
+
+{% macro seo(
+  title='',
+  title_addition='',
+  description='',
+  type='website',
+  is_home=false,
+  is_404=false,
+  is_page=false,
+  page_images='',
+  page_section='',
+  created_time='',
+  updated_time=''
+) %}
+  {% if is_404 %}
+    <meta name="robots" content="noindex, follow">
+  {% else %}
+    <meta name="robots" content="index, follow">
+  {% endif %}
+  {% set page_url = current_url | default(value=get_url(path='404.html')) %}
+  <title>{{ title ~ title_addition }}</title>
+  <meta name="description" content="{{ description }}">
+  <link rel="canonical" href="{{ page_url | safe }}">
+  {% if config.extra.open.enable %}
+    {% set image_url = get_url(path=config.extra.open.image) %}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ title ~ title_addition }}">
+    <meta name="twitter:description" content="{{ description }}">
+    <meta name="twitter:image" content="{{ image_url | safe }}">
+    <meta property="og:title" content="{{ title ~ title_addition }}">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:type" content="{{ type }}">
+    <meta property="og:url" content="{{ page_url | safe }}">
+    <meta property="og:image" content="{{ image_url | safe }}">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:site_name" content="{{ config.title }}">
+    <meta property="og:locale" content="{{ config.extra.open.og_locale | default(value='en_US') }}">
+  {% endif %}
+  {% if is_home and config.extra.schema.type == 'Person' %}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "{{ config.base_url | safe }}/#person",
+        "url": "{{ config.base_url | safe }}/",
+        "name": "{{ config.extra.author }}",
+        "sameAs": ["{{ config.extra.schema.github | safe }}"]
+      }
+    </script>
+  {% endif %}
+{% endmacro %}
