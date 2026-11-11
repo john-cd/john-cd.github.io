@@ -1,4 +1,5 @@
 +++
+# About page content and metadata.
 title = "About"
 description = "Background and areas of work for John Cruchon-Dupeyrat."
 +++

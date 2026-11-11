@@ -1,3 +1,4 @@
+# The AdiDoks theme is pinned as a Git submodule.
 [submodule "themes/adidoks"]
 	path = themes/adidoks
 	url = https://github.com/aaranxu/adidoks.git

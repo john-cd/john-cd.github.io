@@ -1,3 +1,4 @@
+# Compose service used by the repository's Dev Container.
 services:
   site:
     build:

@@ -1,4 +1,5 @@
 +++
+# Privacy notice content and page metadata.
 title = "Privacy"
 description = "How this personal website handles privacy."
 +++

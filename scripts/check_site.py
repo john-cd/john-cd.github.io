@@ -1,3 +1,5 @@
+"""Validate the generated Zola site routes, assets, feeds, and local links."""
+
 from __future__ import annotations
 
 import json
@@ -44,7 +46,10 @@ REQUIRED_FILES = {
 
 
 class HTMLReferences(HTMLParser):
+    """Collect local references, IDs, and the document title from HTML."""
+
     def __init__(self) -> None:
+        """Initialize the collected HTML data."""
         super().__init__(convert_charrefs=True)
         self.references: list[str] = []
         self.ids: set[str] = set()
@@ -52,6 +57,7 @@ class HTMLReferences(HTMLParser):
         self._in_title = False
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        """Record references and anchors from a start tag."""
         values = dict(attrs)
         for name in ("href", "src", "poster"):
             value = values.get(name)
@@ -65,20 +71,24 @@ class HTMLReferences(HTMLParser):
             self._in_title = True
 
     def handle_endtag(self, tag: str) -> None:
+        """Stop collecting title text at the closing title tag."""
         if tag == "title":
             self._in_title = False
 
     def handle_data(self, data: str) -> None:
+        """Collect text while parsing the document title."""
         if self._in_title:
             self.titles.append(data)
 
 
 def fail(message: str) -> None:
+    """Print a validation error and stop with a failing exit status."""
     print(f"ERROR: {message}", file=sys.stderr)
     raise SystemExit(1)
 
 
 def output_path_for_url(path: str, source: Path) -> Path:
+    """Map a site-relative URL path to its generated output file."""
     if not path or path == "/":
         return PUBLIC / "index.html"
 
@@ -94,6 +104,7 @@ def output_path_for_url(path: str, source: Path) -> Path:
 
 
 def check_reference(reference: str, source: Path, ids_by_file: dict[Path, set[str]]) -> bool:
+    """Validate a local reference and report whether it targets this site."""
     parsed = urlsplit(reference)
     if parsed.scheme or parsed.netloc:
         if parsed.scheme not in {"http", "https"} or parsed.netloc.lower() != "john-cd.com":
@@ -129,6 +140,7 @@ def check_reference(reference: str, source: Path, ids_by_file: dict[Path, set[st
 
 
 def main() -> None:
+    """Check required output files and every local HTML/CSS reference."""
     global PUBLIC
     if len(sys.argv) > 1:
         PUBLIC = Path(sys.argv[1]).resolve()

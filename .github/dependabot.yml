@@ -1,3 +1,4 @@
+# Keep the repository's Actions, submodule, container, and Dev Container dependencies current.
 version: 2
 updates:
   - package-ecosystem: github-actions

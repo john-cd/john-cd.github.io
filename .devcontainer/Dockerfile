@@ -1,3 +1,4 @@
+# Development image with a checksum-verified, pinned Zola binary.
 FROM mcr.microsoft.com/devcontainers/base:ubuntu-24.04
 
 ARG ZOLA_VERSION=0.19.2

@@ -1,4 +1,5 @@
 +++
+# Curriculum vitae content and page metadata.
 title = "CV"
 description = "Curriculum Vitae"
 +++

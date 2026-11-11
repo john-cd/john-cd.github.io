@@ -1,3 +1,5 @@
+"""Run Zola's preview server and keep legacy empty feed routes available."""
+
 from __future__ import annotations
 
 import os
@@ -13,7 +15,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main() -> int:
-    zola = os.environ.get("SITE_ZOLA_BIN", "zola")
+    """Start Zola and maintain feed fallbacks until the server exits."""
+    zola = os.environ.get("SITE_ZOLA_BIN", os.environ.get("ZOLA", "zola"))
     interface = os.environ.get("SITE_SERVE_INTERFACE", "127.0.0.1")
     port = os.environ.get("SITE_SERVE_PORT", "1111")
     command = [zola, "serve", "--interface", interface, "--port", port, *sys.argv[1:]]

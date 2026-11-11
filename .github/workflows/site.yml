@@ -1,3 +1,4 @@
+# Validate both branches and publish GitHub Pages only from the release branch.
 name: Build and publish site
 
 on:

@@ -1,4 +1,5 @@
 +++
+# Homepage content and metadata.
 title = "John Cruchon-Dupeyrat"
 description = "John's writing on data engineering, search, machine learning, and software architecture."
 generate_feeds = true

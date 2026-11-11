@@ -1,4 +1,5 @@
 +++
+# Unpublished article migrated from the earlier site; review before publishing.
 title = "Architecture of a Batch Processing Subsystem"
 description = "Simple batch processing on AWS with Spark"
 date = 2017-02-19

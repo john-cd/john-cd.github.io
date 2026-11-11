@@ -1,4 +1,5 @@
 +++
+# Unpublished article migrated from the earlier site; review before publishing.
 title = "Deep Learning - Convolutional Neural Networks for Image Classification"
 description = "Starting with CNNs and Keras"
 date = 2017-03-08

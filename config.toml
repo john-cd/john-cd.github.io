@@ -1,3 +1,4 @@
+# Zola site metadata and AdiDoks theme configuration.
 base_url = "https://john-cd.com"
 title = "John Cruchon-Dupeyrat"
 description = "Writing and project notes on data engineering, search, machine learning, and software architecture."

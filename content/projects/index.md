@@ -1,4 +1,5 @@
 +++
+# Selected projects and page metadata.
 title = "Projects"
 description = "Selected public projects and technical notes."
 +++

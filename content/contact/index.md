@@ -1,4 +1,5 @@
 +++
+# Contact page content and metadata.
 title = "Contact"
 description = "Contact John Cruchon-Dupeyrat."
 +++

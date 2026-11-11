@@ -1,3 +1,4 @@
+/** Search the local index and render keyboard-navigable, text-only suggestions. */
 (function () {
   const input = document.getElementById("userinput");
   const suggestions = document.getElementById("suggestions");
@@ -15,6 +16,7 @@
   }
 
   function cleanText(value) {
+    // Search-index bodies may include HTML; excerpts should remain plain text.
     return value.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
   }
 
@@ -23,6 +25,7 @@
   }
 
   function addHighlightedText(element, value, terms) {
+    // Build highlights from text nodes so indexed content is never parsed as markup.
     const alternatives = terms
       .filter((term) => term.length > 1)
       .sort((left, right) => right.length - left.length)

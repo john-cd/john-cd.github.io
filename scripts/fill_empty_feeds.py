@@ -1,3 +1,5 @@
+"""Create empty RSS and Atom files when Zola has no public posts to emit."""
+
 from __future__ import annotations
 
 import shutil
@@ -11,6 +13,7 @@ FEED_NAMES = ("atom.xml", "feed.xml")
 
 
 def fill_empty_feeds(output_dir: Path) -> list[str]:
+    """Copy only missing feed files into a generated site directory."""
     if not output_dir.is_dir():
         raise FileNotFoundError(f"Zola output directory does not exist: {output_dir}")
 

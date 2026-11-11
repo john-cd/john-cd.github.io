@@ -1,7 +1,9 @@
+/** Apply the saved or system theme and keep the toggle usable without storage. */
 const modeButton = document.getElementById("mode");
 const themeStorageKey = "theme";
 
 function readThemePreference() {
+  // Browser storage may be unavailable in private or restricted contexts.
   try {
     return localStorage.getItem(themeStorageKey);
   } catch {
@@ -10,6 +12,7 @@ function readThemePreference() {
 }
 
 function saveThemePreference(theme) {
+  // Persist the choice when available; theme changes still work otherwise.
   try {
     localStorage.setItem(themeStorageKey, theme);
   } catch {

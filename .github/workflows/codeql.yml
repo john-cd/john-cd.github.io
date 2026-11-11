@@ -1,3 +1,4 @@
+# Scan maintained JavaScript and Python code on integration and release branches.
 name: CodeQL
 
 on:
