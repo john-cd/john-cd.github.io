@@ -1,5 +1,29 @@
-# Auto detect text files and perform LF normalization
+# Normalize source files to LF across Windows and Linux builds.
 * text=auto
+*.md text eol=lf
+*.toml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.webmanifest text eol=lf
+*.html text eol=lf
+*.xml text eol=lf
+*.txt text eol=lf
+*.js text eol=lf
+*.py text eol=lf
+*.css text eol=lf
+*.svg text eol=lf
+
+# Preserve binary assets without text conversion.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.pdf binary
+*.zip binary
 
 # Custom for Visual Studio
 *.cs     diff=csharp

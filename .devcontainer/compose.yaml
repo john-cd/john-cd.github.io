@@ -1,0 +1,14 @@
+services:
+  site:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    init: true
+    command: ["sleep", "infinity"]
+    volumes:
+      - ..:/workspaces/john-cd.github.io:cached
+    environment:
+      SITE_SERVE_INTERFACE: 0.0.0.0
+      SITE_SERVE_PORT: "1111"
+    ports:
+      - "127.0.0.1:1111:1111"
