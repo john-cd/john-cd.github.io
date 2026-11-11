@@ -16,7 +16,7 @@ include_description = true
 include_content = true
 
 [extra]
-author = "John Cruchon-Dupeyrat"
+author = "S. John CD"
 github = "https://github.com/john-cd"
 is_netlify = false
 language_code = "en-US"
