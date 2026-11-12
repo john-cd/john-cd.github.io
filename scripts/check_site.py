@@ -17,8 +17,13 @@ PUBLIC = ROOT / "public"
 BASE_URL = "https://john-cd.com"
 # The site host is compared independently from URL schemes.
 SITE_HOST = urlsplit(BASE_URL).hostname
-# Cheatsheets is published by a separate GitHub Pages repository.
-EXTERNAL_PROJECT_ROUTES = {"/cheatsheets", "/cheatsheets/"}
+# These book routes are served by separate repositories outside this Zola build.
+EXTERNAL_PROJECT_ROUTES = {
+    "/cheatsheets",
+    "/cheatsheets/",
+    "/rust_howto",
+    "/rust_howto/",
+}
 # These public pages and theme assets should exist in every production build.
 REQUIRED_FILES = {
     "index.html",
