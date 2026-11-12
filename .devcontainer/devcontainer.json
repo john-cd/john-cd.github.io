@@ -1,7 +1,8 @@
+// VS Code opens the project-scoped Compose service and forwards its local Zola preview.
 {
-  "name": "John's Zola site",
+  "name": "john-cd-github-io - John's Zola site",
   "dockerComposeFile": "compose.yaml",
-  "service": "site",
+  "service": "john-cd-github-io-site",
   "workspaceFolder": "/workspaces/john-cd.github.io",
   "forwardPorts": [1111],
   "portsAttributes": {
@@ -11,5 +12,6 @@
     }
   },
   "remoteUser": "vscode",
+  // Initialize the pinned Linkita theme after the workspace is mounted.
   "postCreateCommand": "git submodule update --init --recursive"
 }

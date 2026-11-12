@@ -1,9 +1,15 @@
-# Compose service used by the repository's Dev Container.
+# Project-scoped Compose stack: john-cd-github-io.
+# Build inputs come from tracked .devcontainer/.env; from the repo root pass --env-file .devcontainer/.env.
+# Keep credentials in ignored .devcontainer/.env.local; from the repo root pass it as a second --env-file when present.
+name: john-cd-github-io
 services:
-  site:
+  john-cd-github-io-site:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
+      args:
+        ZOLA_VERSION: "${ZOLA_VERSION:?Set ZOLA_VERSION in .devcontainer/.env}"
+        ZOLA_SHA256: "${ZOLA_SHA256:?Set ZOLA_SHA256 in .devcontainer/.env}"
     init: true
     command: ["sleep", "infinity"]
     volumes:
