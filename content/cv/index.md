@@ -1,257 +1,149 @@
 +++
-# Curriculum vitae content and page metadata.
+# CV page adapted from the supplied resume dated March 2024.
 title = "CV"
-description = "Curriculum Vitae"
+description = "Product leadership, data platforms, cloud infrastructure, and software engineering experience."
 +++
 
-----------------------------------------------------------------
-**TECHNOLOGY MANAGEMENT**
--   PRODUCT AND PROGRAM MANAGEMENT
--   MANAGEMENT OF LARGE CROSS-FUNCTIONAL TEAMS
+## S. John Cruchon-Dupeyrat, Ph.D.
 
-**DATA SCIENCE / DATA ARCHITECTURE**
--   DATA ANALYSIS AND GOVERNANCE
--   INFORMATION RETRIEVAL / SEARCH
--   TEXT MINING
--   KNOWLEDGE MANAGEMENT
+LinkedIn: linkedin.com/in/scdupeyrat/ · [GitHub](https://github.com/john-cd/)
 
-**SOFTWARE / CLOUD ENGINEERING**
--   BUSINESS ANALYSIS, REQUIREMENTS
--   SYSTEMS ARCHITECTURE
--   BIG DATA
--   CLOUD-SCALE INFRASTRUCTURE
+Seattle, Washington · Open to remote work · Not available for relocation
 
-**MANAGEMENT CONSULTING**
--   TECHNOLOGY STRATEGY
--   INTELLECTUAL PROPERTY
--   COMPETITIVE INTELLIGENCE
+## Profile
 
-----------------------------------------------------------------------------------------------------------------------
+Product and technology leader with 20+ years of experience building software products and platforms used by hundreds of millions of customers. Experience spans product definition, architecture, engineering, and delivery; leading cross-functional teams of up to 200 people across onshore and offshore locations; and working with C-level executives. Career highlights include two successful exits, an approximately $100M acquisition and a $60B IPO. Inventor on 11 U.S. patents and technical book author.
 
-### **SUMMARY OF QUALIFICATIONS**
+## Areas of expertise
 
--   Seventeen years of experience in R&D and software engineering,
-    including 10+ years in Data / Analytics.
+- **Product and leadership:** Product and program management, technology and business strategy, roadmaps, agile delivery, team and stakeholder leadership, vendor management, competitive intelligence, innovation, mentoring, and business development.
+- **Data and analytics:** Data engineering and governance, big data, analytics, business intelligence, machine learning, predictive analytics, natural language processing, information retrieval, and search.
+- **Software and infrastructure:** Rust, Python, Java, C#, .NET, SQL, cloud platforms, distributed systems, data platforms, Docker, Kubernetes, and Linux.
 
--   Senior manager and technologist with the demonstrated ability to
-    develop a product vision, translate it into an innovative
-    architecture, and bring the product to commercial release.
+## Experience
 
--   Managed large cross-functional teams (30 – 200 people,
-    on-shore/off-shore), worked with C-level executives.
+### Startup Advisor, Consultant, and Book Author
 
--   Record of success with complex, high-profile projects: veteran of
-    very large business deals with Fortune 500 companies resulting in
-    more than \$2 Billion of revenue.
+**2023–present**
 
--   Early employee in multiple startups. Inventor with 11 US patents.
+Help startups define product strategy and technology architecture. Writing the Rust How-to book, a compendium of code examples for the Rust language and ecosystem, and contributing to open-source software.
 
-### **WORK EXPERIENCE**
+**Technologies:** Rust, PostgreSQL, Redis, Docker, Kubernetes, Linux.
 
-#### 2017 - Pres.   **Principal Product Manager, Big Data**     Inspur
+### Head of Data · Inspectify
 
-#### 2014 – 2017    **Data Scientist**     Salesify
+**2022**
 
-Salesify is a B2B sales lead generation and customer intelligence
-company (\~1,000 employees in three countries).
+Led data engineering, data science, analytics, and related product management for a nationwide home-inspection marketplace funded by Y Combinator. First data hire, reporting to the CTO and serving on the leadership committee.
 
-Sole data scientist for the entire company. Reports to the CFO / Chief
-Product Officer.
+- Created a data roadmap for building a rich dataset about homes and opening markets in insurance, appraisals, and property management.
+- Wrote the recruiting plan, hired the company's first data analyst, and trained a three-person team to normalize data across inspection types.
+- Selected data infrastructure and machine-learning vendors and technologies; assessed a potential acquisition involving computer-vision automation.
+- Led the launch of a new appraisals product in under two months.
 
-**Responsibilities:**
+**Technologies:** Metabase, dbt, Amazon Rekognition, Python, AWS, Heroku.
 
--   Built from the ground up "B2BSignals.com", Salesify’s sales lead
-    **search engine** and **analytics** platform (first senior
-    management hire for the project).
+### Principal Product Manager · Coupang
 
--   Responsible for all aspects of data management and processing:
-    analysis and requirements; vendor selection, technology and
-    algorithm choices; proofs of concept; information architecture,
-    standards and processes; reference data / taxonomy management and
-    data stewardship.
+**2020–2022**
 
--   Build the company’s business ontology. Develop natural language
-    processing solutions (named entity recognition, keyword extraction).
-    Engineer cloud systems.
+Owned the advertising platform's data and infrastructure for South Korea's largest online retailer. Supported more than $1.2B in annual recurring revenue across advertiser reporting, settlements and finance, machine learning, fraud detection, and analytics.
 
--   Supervise multiple teams of managers, research analysts, database
-    administrators and engineers (&gt; 30 people) in the Philippines and
-    USA.
+- Re-architected ad-event processing, data pipelines, and feature stores to support rapid growth; advertising revenue tripled year over year in Q3 2021.
+- Launched backend systems for Coupang Eats ads (for Korea's most-downloaded iOS app in 2021), offsite ads, and brand ads.
+- Delivered advertiser reporting and a data API for more than 30,000 advertisers, reducing data insertion latency by 95%, query latency by 89%, and increasing capacity 100-fold.
+- Delivered a new ad-configuration hub within four months, removing two years of technical debt by coordinating teams across three offices and two countries.
+- Identified more than $100M in annual losses tied to ad fill rate and latency, then led teams that recovered about 3% of program revenue each quarter.
+- Revamped analytics hiring and served as interim manager for U.S. analytics and data-engineering teams during a year-long director search.
 
-**Accomplishments:**
+**Technologies:** Spark, Hive, Presto, ClickHouse, Airflow, Kafka, AWS (S3, EMR), MySQL, PostgreSQL, Redis, Cassandra, Java/Spring, Prophet, Tableau, ReDash, Splunk On-Call.
 
--   Commercially launched B2BSignals in July 2016. The product delivers
-    tens of millions of sales contacts in 50,000+ companies and tracks
-    the install base of 22,000+ products and technologies.
+### Principal Product Manager, Big Data · Zillow Group
 
--   Designed the underlying cloud-based, **distributed data processing**
-    engine that extracts structured information from hundreds of
-    millions of records in 20+ data sources.
+**2018–2020**
 
--   The launch of B2BSignals was a key driver for the eight-figure
-    acquisition of Salesify by Ziff-Davis / J2 Global, a Russell 2000
-    company.
+Administered the petabyte-scale data lake for the largest U.S. real-estate and rental marketplace, with 194M average monthly unique visitors and $1.2B in revenue. Delivered data to more than 60 machine-learning systems and 2,000 internal clients.
 
-**Technology stack:**
+- Served as interim Director of Data Engineering and resolved key ETL-platform stability issues.
+- Expanded engineering capacity by hiring data engineers, onboarding engineering leaders, building a 23-person site-reliability and data-engineering team in India, and training more than 150 U.S. data scientists.
+- Delivered data pipelines for two major advertising and lead-generation products.
+- Saved about $1M in processing costs through new data-platform vendor selection and contract negotiation.
+- Led the data-lake privacy platform, reaching California Consumer Privacy Act compliance ahead of the legal deadline.
+- Set a roadmap for the next-generation data-engineering platform, emphasizing governance; simplified Spark/Airflow cloud data integration and accelerated migration from on-premises SQL Server systems, improving reliability and SLA metrics by more than 10%.
 
-*NoSQL (MongoDB), ElasticSearch, data warehousing (RedShift), cloud (AWS
-and Google Cloud Platform), ETL (Alteryx), business intelligence
-(JasperSoft, Kibana), data visualization (D3.js), Java, Python, Hadoop
-ecosystem (Spark / AWS EMR).*
+**Technologies:** Airflow, Spark, Hive, Ranger, Presto, Qubole, Mode, Python, Scala, AWS (S3, EMR, ECS, RDS, Kinesis, Firehose), Docker, Kubernetes, Kong, Terraform, Splunk, PagerDuty, OpsGenie.
 
+### Principal Big Data Product Manager · Inspur
 
-#### 2010 – 2014     **Technology & IP Consultant**      MBO Partners / self-employed
+**2017–2018**
 
-Served as an analytics consultant and interim CTO / CIO for a number of
-small companies and startups in southern California - working on machine
-learning projects from image analysis to marketing analytics for the
-gaming industry. 
+Led product for the R&D arm of Inspur's Software Business Group, including 85 software engineers and a 10-person U.S. group. Inspur was a top-three IT company in China with more than $6B in revenue. Reported to the Chief Architect.
 
-**Services:**
+- Defined the business strategy and plan for the “Three Lakes” Big Data and Data Science as a Service platform, including competitive analysis, positioning, roadmap, budget, resource allocation, and more than 1,000 user stories.
+- Hired four U.S. engineers and supervised two engineering teams in China and one in the U.S.
+- Iterated three platform versions in six months, demonstrating one-click deployment of distributed data-processing and database clusters with storage, orchestration, monitoring, logging, security, API gateways, and build automation.
+- Advised executives on big data, cloud, and agile methods and supported strategic-client presales.
 
--   Statistical analysis and data mining (R, Knime, SQL, AWS, Python)
-    for the management of intellectual property and financial assets
-    (loan analysis, portfolio optimization).
+**Technologies:** JupyterHub, TensorFlow, scikit-learn, Spark, Hadoop, Airflow, NiFi, Kudu, JanusGraph, Elasticsearch, Terraform, Ansible, Jenkins, Kubernetes, Helm, Kong, Consul, Keycloak, Ceph, Prometheus, Grafana, AWS.
 
--   Technology consulting: information architecture, design of software
-    systems used for intellectual property asset management (business
-    intelligence & analytics, document search).
+### Data Scientist, Product Owner, and Technical Program Manager · Salesify
 
--   Technology commercialization consulting: technology & competitive
-    analysis, patent analysis, strategy.
+**2014–2017**
 
-**Accomplishments:**
+Built B2BSignals.com, a sales-lead search engine and customer-intelligence SaaS product. Reported to the CFO.
 
--   Redesigned the portfolio management system of the owner of over
-    30,000 patents (data management and quality).
+- Architected the cloud-based data-processing engine and defined requirements, technologies, NLP algorithms, data-stewardship processes, and standards.
+- Built and led teams of analysts, database administrators, and engineers across the Philippines and the U.S.
+- Launched the SaaS product; its growth helped drive Salesify's eight-figure acquisition by publicly traded Ziff-Davis, a Russell 2000 company.
 
--   Created a (fixed-income) portfolio optimization algorithm producing
-    an 11+ percent internal rate of return.
+**Technologies:** MongoDB, Elasticsearch, Alteryx, Redshift, JasperSoft, Kibana, D3.js, Java, Python, Spark, EMR, Google Cloud APIs, AWS.
 
--   Guided institutional investors through multimillion investment
-    decisions based on an analysis of the target companies' technology
-    and patents.
+### Technology Consultant · MBO Partners
 
-#### 2006 – 2010     **Licensing Manager**  *(promoted from* Technical Analyst*)*        Intellectual Ventures
+**2010–2014**
 
-Intellectual Ventures is a family of investment funds with more than
-five billion dollars under management, specializing in intellectual
-property licensing.
+Advised small companies and startups on data and systems architecture, cloud migration, and data mining.
 
-**Duties** as the **Quantitative Analyst** for the **office of the
-CTO:**
+- Redesigned portfolio-management software for an owner of more than 30,000 patents.
+- Wrote a fixed-income portfolio-optimization algorithm that produced an 11%+ internal rate of return.
+- Served as interim CTO for a marketing-analytics company.
 
--   Created metrics, statistical analyses and data visualizations
-    (Mathematica, SQL, R, Excel) in preparation for major licensing deal
-    negotiations.
+### Licensing Manager, promoted from Technical Analyst · Intellectual Ventures
 
--   Analyzed large patent and business datasets.
+**2006–2010**
 
--   Performed document search and classification.
+Served as a data scientist in the CTO's office at an intellectual-property investment fund with more than $5B under management. Reported to the General Manager.
 
--   Developed financial models.
+- Managed 200+ external analysts and priced hundreds of deals and thousands of patents, contributing to $200M in patent purchases.
+- Performed quantitative analysis and financial modeling for licensing negotiations with Fortune 50 companies, contributing to more than $2B in revenue.
+- Shaped requirements, database design, and user experience for portfolio-management and analysis software.
 
--   Key actor in the development of the company’s IP management tools
-    (.NET, SQL Server, IP Manager) and its overall business intelligence
-    system (process reengineering, requirement analysis, information
-    architecture).
+### Senior Staff Scientist, promoted from Instrumentation Engineer · NanoInk
 
-**Duties** as a **patent portfolio manager:**
+**2002–2006**
 
--   Analyzed patents, performed due diligence & valuation. Developed new
-    licensing programs and business models. Reported to the General
-    Manager.
+Developed nanoscale-manufacturing tools for semiconductor, life-sciences, and anti-counterfeiting markets. Reported to the VP of Engineering.
 
-**Accomplishments:**
+- As the company's first engineer, developed core technologies and helped shape its scientific roadmap as the startup grew to 75 employees and raised more than $150M in venture capital.
+- Designed two products, wrote instrument-control software, and helped release the first product in four months; completed nine major software releases in two years.
+- Authored scientific papers and grant proposals that secured about $1M in SBIR research funding.
+- Built a portfolio of more than 100 patents and patent applications filed worldwide; was the principal inventor on a patent described as “fundamental” in a peer-reviewed article.
 
--   While managing a team of 200+ external analysts, reviewed, analyzed
-    and priced hundreds of deals and thousands of patents across a wide
-    array of technologies (including telecommunications, software,
-    optics), resulting in the purchase of \$200 million worth of
-    patents.
+### Early career
 
--   Part of a global acquisitions team that evaluated an average of
-    35,000 patents a year and achieved a 650% portfolio growth in 5
-    years.
+Graduate research and teaching assistant; systems and database administrator; quality assistant in an aerospace wire-and-cable company; and software developer for aeronautical, military-electronics, and semiconductor-equipment companies.
 
--   Provided vision and key design elements for a company-wide ERP and
-    business intelligence toolset supporting billion-dollar-scale patent
-    acquisitions, portfolio management and licensing.
+## Education
 
--   Designed dozens of prototypes, tools and multiple databases to
-    automate patent-related statistical analyses.
+- **Ph.D., Physical Chemistry (Nanotechnology)** · Wayne State University. Multiple academic awards, Rumble Fellowship, and nine peer-reviewed publications.
+- **Master's in Engineering** · CPE Lyon. Graduate studies in chemistry, physics, and electronics following undergraduate study in physics, mathematics, and computer science.
 
--   Quantitative analysis work was crucial to dozens of large licensing
-    deals with Fortune 500 companies in the software, consumer
-    electronics, financial services, mobile phone, and e-commerce
-    industries, contributing more than \$2 Billion in revenue.
+## Additional information
 
+- **Languages:** French (fluent), Spanish (beginner).
+- **Citizenship:** United States.
+- **Patents:** Inventor on 11 U.S. patents; developed patent portfolios and applications across multiple roles.
 
-#### 2002 – 2006 **Senior Staff Scientist** *(promoted from* Instrumentation Engineer*)* NanoInk
+## Tools and methods
 
-NanoInk produced nanoscale-manufacturing tools for the semiconductor,
-life sciences and anti-counterfeiting markets.
-
-**Duties:**
-
-Managed the R&D for lithography tools. Wrote the instrument
-control software (VB.NET, C\#). Created and managed the company’s
-intellectual property portfolio. Reported to the VP of Engineering.
-
-**Accomplishments:**
-
--   As NanoInk’s first engineer, developed its key technologies and
-    shaped its technological and scientific roadmap. This nanotech
-    start-up grew into a 75-person company and a recipient of \$150M+ in
-    venture capital.
-
--   Designed NanoInk’s first product and, as part of a two-person team,
-    brought it to commercial release in 4 ½ months. Completed four
-    release cycles in 18 months. Wrote the software for a
-    second-generation instrument (five major releases).
-
--   Authored scientific papers and grant proposals to obtain close to
-    \$1M in SBIR research funding.
-
--   Created from scratch a portfolio of over 100 patents and patent
-    applications filed worldwide.
-
--   Developed the IP strategy.
-
--   Main inventor of a patent named “fundamental” in a third-party
-    peer-reviewed article.
-
-### Early Career (7 years)
-
-Graduate research and teaching assistant. System & database
-administrator. Quality assistant in an aerospace wire and cable company.
-Software developer for aeronautical, military electronics &
-semiconductor equipment companies.
-
-### EDUCATION
-
-#### 2001 	**Ph.D.** in physical chemistry		 Wayne State University
-
-Nanotechnology / instrumentation. Multiple academic awards. Rumble
-fellowship. GPA 4.0 out of 4.0.
-
-#### 1996 **Master’s** in engineering CPE Lyon
-
-Engineer’s diploma from the graduate school of chemistry, physics and
-electronics of Lyon (France), after undergraduate studies in physics,
-mathematics and computer science.
-
-US Citizen. Bilingual (French).
-
-Nine peer-reviewed scientific publications and 30+ US and foreign
-patents / patent applications.
-
-*DB / DW:* MongoDB, RedShift, RDS, MySQL, SQL Server • *DM / ML:* R, KNIME,
-scikit-learn, MLlib, NLTK, gensim • C\#, Visual Basic, Microsoft .NET,
-Python • *Source control:* Git, GitHub, BB, TFS • *Agile Project Management:*
-Rally, CloudForge • *ETL:* Alteryx, SSIS/SSAS • *Reporting:* SSRS, BIRT,
-JasperSoft, Kibana, Tableau • *Search / IR:* ElasticSearch, Solr • *ECM /
-CMS:* Documentum, SharePoint • *OS:* Windows Server, UNIX / Linux, Solaris
-• *AWS:* EC2, S3, Glacier, RDS, RedShift, VPC, IAM, Route 53, SQS, SNS,
-API Gateway, CloudWatch… • Google Cloud APIs • Docker, VMware •
-CloudHealth, WhiteHat Security • Labview, IDL, Mathematica
+Scrum, Kanban, SDLC, incident and release management, Jira, Azure DevOps, Rally, Trello, Confluence, Notion, Miro, Balsamiq, Snowflake, Databricks, Jupyter, pandas, NLTK, spaCy, Visual Studio Code, JetBrains, Git, GitHub, Docker Compose, Kubernetes, VMware, Solr, Documentum, SharePoint, Windows Server, Linux, Azure, Akamai, CloudHealth, and WhiteHat Security.
