@@ -1,0 +1,18 @@
+# Shared baseline checks for repository hygiene and configuration syntax.
+minimum_prek_version = "0.5.6"
+
+[[repos]]
+repo = "builtin"
+hooks = [
+  { id = "check-added-large-files", args = ["--maxkb=1024"] },
+  { id = "check-case-conflict" },
+  { id = "check-illegal-windows-names" },
+  { id = "check-merge-conflict" },
+  { id = "check-toml" },
+  { id = "check-yaml" },
+  { id = "detect-private-key" },
+  { id = "end-of-file-fixer" },
+  { id = "fix-byte-order-marker" },
+  { id = "mixed-line-ending", args = ["--fix=lf"] },
+  { id = "trailing-whitespace", args = ["--markdown-linebreak-ext=md"] },
+]
