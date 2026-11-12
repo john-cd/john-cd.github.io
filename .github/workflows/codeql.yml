@@ -1,4 +1,4 @@
-# Scan maintained JavaScript and Python code on integration and release branches.
+# Scan maintained Python scripts and any first-party JavaScript code.
 name: CodeQL
 
 on:

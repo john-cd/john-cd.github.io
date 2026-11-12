@@ -1,4 +1,4 @@
-# Validate both branches and publish GitHub Pages only from the release branch.
+# Build and validate both branches; publish GitHub Pages only from a push to the release branch.
 name: Build and publish site
 
 on:
@@ -8,14 +8,17 @@ on:
     branches: [develop, main]
 
 permissions:
+  # The build only needs to read the repository and its theme submodule.
   contents: read
 
+# Cancel obsolete runs on the same ref so a newer source revision takes priority.
 concurrency:
   group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   build:
+    # Pull requests and pushes use the same validated artifact build.
     runs-on: ubuntu-latest
     steps:
       - name: Check out the site and theme
@@ -41,6 +44,7 @@ jobs:
           path: public
 
   deploy:
+    # Only a successful push build on main can publish to GitHub Pages.
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest

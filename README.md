@@ -49,11 +49,28 @@ python scripts/fill_empty_feeds.py
 python scripts/check_site.py
 ```
 
-The generated-site check verifies required routes and assets, local links, feed XML, the web manifest, and the custom domain file.
+The generated-site check verifies required pages and assets, local HTML and CSS references (including anchors), feed and sitemap XML, manifest icons, the homepage title, and the custom domain file.
+
+## Maintenance scripts and CI
+
+The scripts in `scripts/` support the local preview and production build:
+
+- `check_zola_version.py` selects the configured Zola executable and rejects versions older than 0.23.6.
+- `fill_empty_feeds.py` copies valid empty RSS and Atom feeds only when Zola did not emit those files. This keeps the public feed routes available while all blog posts remain drafts.
+- `check_site.py` validates the generated files, internal HTML/CSS references, anchors, XML feeds, manifest icons, and CNAME.
+- `serve_site.py` starts Zola's preview server and periodically restores missing empty feed routes while Zola rebuilds.
+
+GitHub Actions uses the same build steps as the local build:
+
+- `.github/workflows/site.yml` runs for pull requests and pushes on `develop` and `main`. Its build job checks out the theme submodule, installs Zola 0.23.6, checks content, builds the site, fills empty feeds, validates the output, and uploads the Pages artifact. A separate job deploys that artifact only for a push to `main`.
+- `.github/workflows/codeql.yml` runs CodeQL's JavaScript and Python analyzers on pull requests, pushes, and a weekly schedule. The current first-party source is Python; the Linkita JavaScript remains in its upstream submodule.
+- `.github/dependabot.yml` checks for updates to Actions, the theme submodule, the container image, and Dev Container configuration.
+
+The tracked `.devcontainer/.env` contains only the Compose project name and public Zola version/checksum pins. Keep credentials in the ignored `.devcontainer/.env.local`, never in the tracked file.
 
 ## Publishing
 
-`develop` is the repository's default integration branch and `main` is the release branch. GitHub Actions checks pull requests targeting either branch; pushes to `main` deploy the generated artifact to GitHub Pages, while pushes to `develop` only build and validate it. Use **GitHub Actions** as the Pages publishing source and configure the custom domain `john-cd.com` in repository settings. The site uses `https://john-cd.com` as its canonical base URL and publishes the `CNAME` file with the artifact.
+`develop` is the integration branch and `main` is the release branch. Keep release history linear by advancing `main` from a validated `develop` commit. Pull requests to either branch and pushes to both branches build and validate the site; only a push to `main` deploys the generated artifact to GitHub Pages. GitHub Pages must use **GitHub Actions** as its publishing source and the custom domain `john-cd.com`. The site uses `https://john-cd.com` as its canonical base URL and publishes the `CNAME` file with the artifact.
 
 The Cheatsheets documentation is maintained in the separate [john-cd/cheatsheets repository](https://github.com/john-cd/cheatsheets) and published at <https://john-cd.github.io/cheatsheets/>.
 
