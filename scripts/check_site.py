@@ -13,8 +13,13 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / "public"
+# Keep this canonical host aligned with config.toml and static/CNAME.
 BASE_URL = "https://john-cd.com"
+# The site host is compared independently from URL schemes.
+SITE_HOST = urlsplit(BASE_URL).hostname
+# Cheatsheets is published by a separate GitHub Pages repository.
 EXTERNAL_PROJECT_ROUTES = {"/cheatsheets", "/cheatsheets/"}
+# These public pages and theme assets should exist in every production build.
 REQUIRED_FILES = {
     "index.html",
     "404.html",
@@ -89,27 +94,37 @@ def fail(message: str) -> None:
     raise SystemExit(1)
 
 
-def output_path_for_url(path: str, source: Path) -> Path:
-    """Map a site-relative URL path to its generated output file."""
+def ensure_public_path(target: Path, reference: str) -> Path:
+    """Resolve a generated-site path and reject references that escape public/."""
+    resolved = target.resolve()
+    try:
+        resolved.relative_to(PUBLIC.resolve())
+    except ValueError:
+        fail(f"reference {reference!r} escapes the generated site directory")
+    return resolved
+
+
+def output_path_for_url(path: str) -> Path:
+    """Map a root-relative URL to its generated output file."""
     if not path or path == "/":
-        return PUBLIC / "index.html"
+        return ensure_public_path(PUBLIC / "index.html", path)
 
     relative = unquote(path).lstrip("/")
-    target = PUBLIC / relative
+    target = ensure_public_path(PUBLIC / relative, path)
     if path.endswith("/"):
-        return target / "index.html"
+        return ensure_public_path(target / "index.html", path)
     if target.suffix:
         return target
     if target.is_file():
         return target
-    return target / "index.html"
+    return ensure_public_path(target / "index.html", path)
 
 
 def check_reference(reference: str, source: Path, ids_by_file: dict[Path, set[str]]) -> bool:
     """Validate a local reference and report whether it targets this site."""
     parsed = urlsplit(reference)
     if parsed.scheme or parsed.netloc:
-        if parsed.scheme not in {"http", "https"} or parsed.netloc.lower() != "john-cd.com":
+        if parsed.scheme not in {"http", "https"} or parsed.hostname != SITE_HOST:
             return False
         path = parsed.path or "/"
     else:
@@ -121,9 +136,9 @@ def check_reference(reference: str, source: Path, ids_by_file: dict[Path, set[st
     if not path:
         target = source
     elif path.startswith("/"):
-        target = output_path_for_url(path, source)
+        target = output_path_for_url(path)
     else:
-        target = (source.parent / unquote(path)).resolve()
+        target = ensure_public_path(source.parent / unquote(path), reference)
 
     if not target.exists():
         fail(f"{source.relative_to(PUBLIC).as_posix()} references missing {reference!r}")
@@ -159,7 +174,8 @@ def main() -> None:
 
     manifest = json.loads((PUBLIC / "site.webmanifest").read_text(encoding="utf-8"))
     for icon in manifest.get("icons", []):
-        if not (PUBLIC / icon["src"].lstrip("/")).is_file():
+        icon_path = ensure_public_path(PUBLIC / icon["src"].lstrip("/"), icon["src"])
+        if not icon_path.is_file():
             fail(f"web manifest references missing icon {icon['src']!r}")
 
     for feed in ("atom.xml", "feed.xml", "sitemap.xml"):
@@ -184,9 +200,11 @@ def main() -> None:
                 parsed = urlsplit(reference)
                 if parsed.path.lower().endswith(".css"):
                     if parsed.path.startswith("/"):
-                        linked_stylesheets.add(output_path_for_url(parsed.path, html_file))
+                        linked_stylesheets.add(output_path_for_url(parsed.path))
                     else:
-                        linked_stylesheets.add((html_file.parent / unquote(parsed.path)).resolve())
+                        linked_stylesheets.add(
+                            ensure_public_path(html_file.parent / unquote(parsed.path), reference)
+                        )
 
     # Only parse stylesheets that pages actually load; unused third-party CSS
     # assets may contain optional font fallbacks that are not bundled.
@@ -199,7 +217,10 @@ def main() -> None:
                     if check_reference(reference, css_file, ids_by_file):
                         local_reference_count += 1
                 elif not urlsplit(reference).scheme:
-                    target = (css_file.parent / unquote(reference.split("#", 1)[0].split("?", 1)[0])).resolve()
+                    target = ensure_public_path(
+                        css_file.parent / unquote(reference.split("#", 1)[0].split("?", 1)[0]),
+                        reference,
+                    )
                     if not target.is_file():
                         fail(f"{css_file.relative_to(PUBLIC).as_posix()} references missing asset {reference!r}")
                     local_reference_count += 1
