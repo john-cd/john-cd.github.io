@@ -51,6 +51,7 @@ jobs:
     permissions:
       pages: write
       id-token: write
+    # The repository's github-pages environment must allow main to deploy.
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

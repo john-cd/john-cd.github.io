@@ -55,7 +55,7 @@
 - Before publishing, run `just check` and `just build`, review the diff,
   and confirm the GitHub Actions build passed. After publishing, verify the custom domain, the
   GitHub Pages hostname, and the required content and feed routes.
-- The repository uses GitHub Actions as the Pages source and publishes the `CNAME` file with the generated artifact.
+- The repository uses GitHub Actions as the Pages source. GitHub Pages' custom domain is configured in repository settings; it ignores a `CNAME` file in custom Actions artifacts. Keep `main` in the `github-pages` environment's allowed deployment branches or the deployment job is rejected before its steps start.
 
 ## Git and Windows command sandbox
 

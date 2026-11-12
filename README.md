@@ -70,7 +70,7 @@ The tracked `.devcontainer/.env` contains only the Compose project name and publ
 
 ## Publishing
 
-`develop` is the integration branch and `main` is the release branch. Keep release history linear by advancing `main` from a validated `develop` commit. Pull requests to either branch and pushes to both branches build and validate the site; only a push to `main` deploys the generated artifact to GitHub Pages. GitHub Pages must use **GitHub Actions** as its publishing source and the custom domain `john-cd.com`. The site uses `https://john-cd.com` as its canonical base URL and publishes the `CNAME` file with the artifact.
+`develop` is the integration branch and `main` is the release branch. Keep release history linear by advancing `main` from a validated `develop` commit. Pull requests to either branch and pushes to both branches build and validate the site; only a push to `main` deploys the generated artifact to GitHub Pages. GitHub Pages must use **GitHub Actions** as its publishing source and the custom domain `john-cd.com`. The site uses `https://john-cd.com` as its canonical base URL. GitHub Pages is configured in repository settings to use the custom domain; it ignores a `CNAME` file in custom Actions artifacts. The `github-pages` environment's deployment branch policy must allow `main`. If the build passes but the deploy job is rejected before starting a runner, check that policy first.
 
 The Cheatsheets documentation is maintained in the separate [john-cd/cheatsheets repository](https://github.com/john-cd/cheatsheets) and published at <https://john-cd.github.io/cheatsheets/>.
 
