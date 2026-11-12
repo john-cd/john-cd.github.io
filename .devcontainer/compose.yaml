@@ -8,6 +8,7 @@ services:
       context: ..
       dockerfile: .devcontainer/Dockerfile
       args:
+        UBUNTU_VERSION: "${UBUNTU_VERSION:?Set UBUNTU_VERSION in .devcontainer/.env}"
         ZOLA_VERSION: "${ZOLA_VERSION:?Set ZOLA_VERSION in .devcontainer/.env}"
         ZOLA_SHA256: "${ZOLA_SHA256:?Set ZOLA_SHA256 in .devcontainer/.env}"
     init: true
