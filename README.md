@@ -13,6 +13,8 @@ python3 scripts/serve_site.py
 
 VS Code forwards port 1111 and opens the preview.
 
+The container uses an Ubuntu base image, installs only the site development tools it needs, and verifies the checksum of the pinned Zola release before installing it.
+
 To preview outside the container, install Zola **0.23.6 or newer**, Python 3, and initialize the theme:
 
 ```sh
@@ -34,11 +36,13 @@ just build
 just preview
 ```
 
-The recipes use `python` on Windows and `python3` on Unix-like systems. They require Zola **0.23.6 or newer** because Linkita uses Tera 2 components. Set `ZOLA` to a supported executable if an older version is first on `PATH`; the recipes check the version before running. For example, in PowerShell:
+The recipes use `python` on Windows and `python3` on Unix-like systems. They require Zola **0.23.6 or newer** because Linkita uses Tera 2 components. Set `SITE_ZOLA_BIN` or `ZOLA` to a supported executable if an older version is first on `PATH`; `SITE_ZOLA_BIN` takes precedence, and the recipes check the version before running. For example, in PowerShell:
 
 ```powershell
 $env:ZOLA = 'C:\tools\zola-0.23.6\zola.exe'
 ```
+
+Use `$env:SITE_ZOLA_BIN` in PowerShell to override the selected executable for only the site commands when needed.
 
 The equivalent commands are:
 
@@ -49,7 +53,7 @@ python scripts/fill_empty_feeds.py
 python scripts/check_site.py
 ```
 
-The generated-site check verifies required pages and assets, local HTML and CSS references (including anchors), feed and sitemap XML, manifest icons, the homepage title, and the custom domain file.
+The generated-site check verifies required pages and assets, local HTML and CSS references (including anchors), feed and sitemap XML, manifest icons, the homepage title, and the custom domain file. The separately published Cheatsheets and Rust How-To routes are exempt from local-file lookup and checked as external links by the Zola content check.
 
 ## Maintenance scripts and CI
 
@@ -66,7 +70,7 @@ GitHub Actions uses the same build steps as the local build:
 - `.github/workflows/codeql.yml` runs CodeQL's JavaScript and Python analyzers on pull requests, pushes, and a weekly schedule. The current first-party source is Python; the Linkita JavaScript remains in its upstream submodule.
 - `.github/dependabot.yml` checks for updates to Actions, the theme submodule, the container image, and Dev Container configuration.
 
-The tracked `.devcontainer/.env` contains only the Compose project name and public Zola version/checksum pins. Keep credentials in the ignored `.devcontainer/.env.local`, never in the tracked file.
+The tracked `.devcontainer/.env` contains only public build inputs. Keep credentials and machine-specific values in the ignored `.devcontainer/.env.local`, never in the tracked file.
 
 ## Publishing
 
