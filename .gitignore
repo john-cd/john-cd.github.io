@@ -49,6 +49,7 @@ Temporary Items
 .apdisk
 
 *.swp
+
 # Zola build output and local build state
 /public/
 /.zola-cache/
