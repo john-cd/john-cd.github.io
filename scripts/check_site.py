@@ -109,18 +109,16 @@ def ensure_public_path(target: Path, reference: str) -> Path:
     return resolved
 
 
-def output_path_for_url(path: str) -> Path:
-    """Map a root-relative URL to its generated output file."""
+def output_path_for_url(path: str, base: Path | None = None) -> Path:
+    """Map a URL to its generated file relative to the site or source directory."""
     if not path or path == "/":
         return ensure_public_path(PUBLIC / "index.html", path)
 
     relative = unquote(path).lstrip("/")
-    target = ensure_public_path(PUBLIC / relative, path)
-    if path.endswith("/"):
+    target = ensure_public_path((PUBLIC if base is None else base) / relative, path)
+    if path.endswith("/") or target.is_dir():
         return ensure_public_path(target / "index.html", path)
-    if target.suffix:
-        return target
-    if target.is_file():
+    if target.suffix or target.is_file():
         return target
     return ensure_public_path(target / "index.html", path)
 
@@ -143,9 +141,9 @@ def check_reference(reference: str, source: Path, ids_by_file: dict[Path, set[st
     elif path.startswith("/"):
         target = output_path_for_url(path)
     else:
-        target = ensure_public_path(source.parent / unquote(path), reference)
+        target = output_path_for_url(path, source.parent)
 
-    if not target.exists():
+    if not target.is_file():
         fail(f"{source.relative_to(PUBLIC).as_posix()} references missing {reference!r}")
 
     if parsed.fragment and target.suffix.lower() == ".html":
