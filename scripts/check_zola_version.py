@@ -8,6 +8,7 @@ import subprocess
 import sys
 
 
+# The pinned Linkita theme uses Tera components that require Zola 0.23.6.
 MINIMUM_VERSION = (0, 23, 6)
 MINIMUM_VERSION_TEXT = ".".join(map(str, MINIMUM_VERSION))
 
@@ -33,7 +34,11 @@ def main() -> int:
     version_output = (result.stdout or result.stderr).strip()
     match = re.fullmatch(r"zola (\d+)\.(\d+)\.(\d+)", version_output)
     found_version = tuple(map(int, match.groups())) if match else None
-    if result.returncode != 0 or found_version is None or found_version < MINIMUM_VERSION:
+    if (
+        result.returncode != 0
+        or found_version is None
+        or found_version < MINIMUM_VERSION
+    ):
         found = version_output or f"exit code {result.returncode}"
         print(
             f"This site requires Zola {MINIMUM_VERSION_TEXT} or newer for its pinned "

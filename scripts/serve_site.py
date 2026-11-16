@@ -15,7 +15,11 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main() -> int:
-    """Start Zola and maintain feed fallbacks until the server exits."""
+    """Run Zola with the configured bind address and return its exit status.
+
+    Forward extra command-line arguments to Zola and restore missing feed
+    fallbacks while the preview server rebuilds the generated site.
+    """
     zola = os.environ.get("SITE_ZOLA_BIN", os.environ.get("ZOLA", "zola"))
     interface = os.environ.get("SITE_SERVE_INTERFACE", "127.0.0.1")
     port = os.environ.get("SITE_SERVE_PORT", "1111")

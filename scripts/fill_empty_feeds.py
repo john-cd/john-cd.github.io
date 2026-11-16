@@ -13,7 +13,11 @@ FEED_NAMES = ("atom.xml", "feed.xml")
 
 
 def fill_empty_feeds(output_dir: Path) -> list[str]:
-    """Copy only missing feed files into a generated site directory."""
+    """Copy missing feed files into output_dir and return their filenames.
+
+    Raise FileNotFoundError if the output directory or a needed fallback is
+    missing.
+    """
     if not output_dir.is_dir():
         raise FileNotFoundError(f"Zola output directory does not exist: {output_dir}")
 

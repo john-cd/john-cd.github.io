@@ -63,6 +63,7 @@ The scripts in `scripts/` support the local preview and production build:
 - `fill_empty_feeds.py` copies valid empty RSS and Atom feeds only when Zola did not emit those files. This keeps the public feed routes available while all blog posts remain drafts.
 - `check_site.py` validates the generated files, internal HTML/CSS references, anchors, XML feeds, manifest icons, and CNAME.
 - `serve_site.py` starts Zola's preview server and periodically restores missing empty feed routes while Zola rebuilds.
+- `test_check_site.py` tests generated directory links and their anchors. Run it with `python -B -m unittest discover -s scripts` (`python3` on Unix-like systems).
 
 GitHub Actions uses the same build steps as the local build:
 

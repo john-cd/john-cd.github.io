@@ -53,6 +53,7 @@ These instructions apply to all work in this repository. Keep the site, its docu
 - `scripts/fill_empty_feeds.py` copies valid empty RSS and Atom feeds only when Zola did not emit those files. Do not overwrite a feed generated from public content.
 - `scripts/check_site.py` checks required generated files, the custom domain, manifest icons, feed and sitemap XML, HTML/CSS local links, and HTML anchors. It rejects paths that resolve outside the generated site directory.
 - `scripts/serve_site.py` starts `zola serve`, supports `SITE_SERVE_INTERFACE` and `SITE_SERVE_PORT`, and restores missing empty-feed routes while the preview server rebuilds.
+- `scripts/test_check_site.py` checks generated directory links and anchors with `python -B -m unittest discover -s scripts` (`python3` on Unix-like systems).
 
 ## CI Workflows
 
