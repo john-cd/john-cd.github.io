@@ -123,7 +123,9 @@ def output_path_for_url(path: str, base: Path | None = None) -> Path:
     return ensure_public_path(target / "index.html", path)
 
 
-def check_reference(reference: str, source: Path, ids_by_file: dict[Path, set[str]]) -> bool:
+def check_reference(
+    reference: str, source: Path, ids_by_file: dict[Path, set[str]]
+) -> bool:
     """Validate a local reference and report whether it targets this site."""
     parsed = urlsplit(reference)
     if parsed.scheme or parsed.netloc:
@@ -144,7 +146,9 @@ def check_reference(reference: str, source: Path, ids_by_file: dict[Path, set[st
         target = output_path_for_url(path, source.parent)
 
     if not target.is_file():
-        fail(f"{source.relative_to(PUBLIC).as_posix()} references missing {reference!r}")
+        fail(
+            f"{source.relative_to(PUBLIC).as_posix()} references missing {reference!r}"
+        )
 
     if parsed.fragment and target.suffix.lower() == ".html":
         target_ids = ids_by_file.get(target)
@@ -154,7 +158,9 @@ def check_reference(reference: str, source: Path, ids_by_file: dict[Path, set[st
             target_ids = parser.ids
             ids_by_file[target] = target_ids
         if unquote(parsed.fragment) not in target_ids:
-            fail(f"{source.relative_to(PUBLIC).as_posix()} references missing anchor {reference!r}")
+            fail(
+                f"{source.relative_to(PUBLIC).as_posix()} references missing anchor {reference!r}"
+            )
 
     return True
 
@@ -195,7 +201,10 @@ def main() -> None:
         parser = HTMLReferences()
         parser.feed(html_file.read_text(encoding="utf-8"))
         ids_by_file[html_file] = parser.ids
-        if html_file == PUBLIC / "index.html" and "".join(parser.titles).strip() != "John Cruchon-Dupeyrat":
+        if (
+            html_file == PUBLIC / "index.html"
+            and "".join(parser.titles).strip() != "John Cruchon-Dupeyrat"
+        ):
             fail("the homepage title is not site-specific")
         for reference in parser.references:
             if check_reference(reference, html_file, ids_by_file):
@@ -206,7 +215,9 @@ def main() -> None:
                         linked_stylesheets.add(output_path_for_url(parsed.path))
                     else:
                         linked_stylesheets.add(
-                            ensure_public_path(html_file.parent / unquote(parsed.path), reference)
+                            ensure_public_path(
+                                html_file.parent / unquote(parsed.path), reference
+                            )
                         )
 
     # Only parse stylesheets that pages actually load; unused third-party CSS
@@ -221,14 +232,19 @@ def main() -> None:
                         local_reference_count += 1
                 elif not urlsplit(reference).scheme:
                     target = ensure_public_path(
-                        css_file.parent / unquote(reference.split("#", 1)[0].split("?", 1)[0]),
+                        css_file.parent
+                        / unquote(reference.split("#", 1)[0].split("?", 1)[0]),
                         reference,
                     )
                     if not target.is_file():
-                        fail(f"{css_file.relative_to(PUBLIC).as_posix()} references missing asset {reference!r}")
+                        fail(
+                            f"{css_file.relative_to(PUBLIC).as_posix()} references missing asset {reference!r}"
+                        )
                     local_reference_count += 1
 
-    print(f"Checked {len(html_files)} generated HTML files and {local_reference_count} local links/assets.")
+    print(
+        f"Checked {len(html_files)} generated HTML files and {local_reference_count} local links/assets."
+    )
 
 
 if __name__ == "__main__":
