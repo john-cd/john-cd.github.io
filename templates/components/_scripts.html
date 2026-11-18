@@ -1,0 +1,17 @@
+{% component _scripts(@ctx: map) %}
+  {#- Keep Linkita's color toggle functional if persistent storage is blocked. #}
+  <script src="{{ <_link_static path=`js/site-storage-fallback.js` cachebust={false} /> }}"></script>
+  {%- if ctx.is_mode_serve %}
+  {#- On `zola serve` #}
+  <script src="{{ <_link_static path=`js/theme/color.js` cachebust={false} /> }}"></script>
+  <script src="{{ <_link_static path=`js/theme/analytics.js` cachebust={false} /> }}"></script>
+  <script src="{{ <_link_static path=`js/theme/katex.js` cachebust={false} /> }}"></script>
+  <script src="{{ <_link_static path=`js/theme/menu.js` cachebust={false} /> }}"></script>
+  <script src="{{ <_link_static path=`js/theme/mermaid.js` cachebust={false} /> }}"></script>
+  <script src="{{ <_link_static path=`js/theme/search.js` cachebust={false} /> }}"></script>
+  <script src="{{ <_link_static path=`js/theme/trans.js` cachebust={false} /> }}"></script>
+  {%- else %}
+  {#- On `zola build` #}
+  <script src="{{ <_link_static path=`js/zola-theme.min.js` /> }}"></script>
+  {%- endif %}
+{%- endcomponent %}
