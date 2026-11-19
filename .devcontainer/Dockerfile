@@ -1,11 +1,10 @@
 # Dockerfile build inputs are required and supplied by Compose from tracked .devcontainer/.env.
 # From the repo root pass --env-file .devcontainer/.env and add --env-file .devcontainer/.env.local when present.
-# Small Ubuntu-based Dev Container with a checksum-verified Zola binary and site tools.
-ARG UBUNTU_VERSION
-FROM ubuntu:${UBUNTU_VERSION} AS base
+# Debian slim Dev Container with a checksum-verified Zola binary and site tools.
+ARG DEBIAN_CODENAME
+FROM debian:${DEBIAN_CODENAME}-slim AS base
 
 # Compose supplies these public image and release pins from .devcontainer/.env.
-ARG UBUNTU_VERSION
 ARG ZOLA_VERSION
 ARG ZOLA_SHA256
 
