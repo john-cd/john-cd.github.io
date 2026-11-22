@@ -1,7 +1,7 @@
-# Dockerfile build inputs are required and supplied by Compose from tracked .devcontainer/.env.
+# Dockerfile build inputs are supplied by Compose from tracked .devcontainer/.env.
 # From the repo root pass --env-file .devcontainer/.env and add --env-file .devcontainer/.env.local when present.
 # Debian slim Dev Container with a checksum-verified Zola binary and site tools.
-ARG DEBIAN_CODENAME
+ARG DEBIAN_CODENAME=trixie
 FROM debian:${DEBIAN_CODENAME}-slim AS base
 
 # Compose supplies these public image and release pins from .devcontainer/.env.

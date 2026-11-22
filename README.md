@@ -18,7 +18,7 @@ python3 scripts/serve_site.py
 
 VS Code forwards port 1111 and opens the preview.
 
-The container uses an Ubuntu base image, installs only the site development
+The container uses a Debian base image, installs only the site development
 tools it needs, and verifies the checksum of the pinned Zola release before
 installing it.
 
