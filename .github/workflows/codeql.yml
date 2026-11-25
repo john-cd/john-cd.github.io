@@ -1,3 +1,17 @@
+# Workflow contract documentation (maintained with the implementation).
+# Workflow contract: john-cd.github.io / CodeQL.
+# Purpose: Analyze source or dependencies for the security policy configured below.
+# Execution: workflow_dispatch, push, pull_request, schedule. Trigger branches/paths below are the
+# authoritative input boundary.
+# Manual operation: use the Actions tab or gh workflow run; input defaults below apply unless
+# explicitly overridden.
+# Run policy: newer runs replace obsolete validation in the same group.
+# Access: workflow token permissions are {"actions": "read", "contents": "read", "security-events":
+# "write"}; job-level overrides below own any elevated access.
+# Maintenance: keep full-SHA action references/tool pins coordinated with Dependabot and the
+# repository configuration. See README.md in this directory for the job map and local validation.
+# End workflow contract documentation.
+
 # Scan maintained Python scripts and any first-party JavaScript code.
 name: CodeQL
 
@@ -20,7 +34,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Job analyze: Analyze source or dependencies for the security policy configured below.
+  # Security data can change without a source edit; scheduled/manual triggers complement
+  # change-triggered checks where configured.
   analyze:
+    timeout-minutes: 30
     name: Analyze maintained code
     runs-on: ubuntu-latest
     steps:
