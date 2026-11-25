@@ -138,3 +138,10 @@ first-party content is proprietary. The custom terms in [LICENSE](LICENSE)
 reserve reuse rights and prohibit automated extraction and AI or
 machine-learning training and related uses. The Linkita theme submodule and any
 separately identified third-party material retain their own licenses.
+
+## Workflow operations reference
+
+The [workflow reference](.github/workflows/README.md#workflow-operations-reference) documents
+the site and CodeQL jobs, trigger boundaries, caches, permissions, and deployment guards.
+The workflow files include explanations beside their implementation so refactors preserve
+the validation and publication contract.
