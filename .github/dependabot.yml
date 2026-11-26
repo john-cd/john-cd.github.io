@@ -20,7 +20,8 @@ updates:
       day: wednesday
 
   - package-ecosystem: devcontainers
-    directory: /.devcontainer
+    # Dependabot discovers .devcontainer/devcontainer.json from the repository root.
+    directory: /
     schedule:
       interval: weekly
       day: wednesday
