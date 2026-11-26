@@ -103,7 +103,8 @@ GitHub Actions uses the same build steps as the local build:
   on pull requests, pushes, and a weekly schedule. The current first-party
   source is Python; the Linkita JavaScript remains in its upstream submodule.
 - `.github/dependabot.yml` checks for updates to Actions, the theme submodule,
-  the container image, and Dev Container configuration.
+  the container image, and Dev Container configuration. It groups the CodeQL
+  action updates so initialization and analysis use the same release.
 
 The tracked `.devcontainer/.env` contains only public build inputs. Keep
 credentials and machine-specific values in the ignored

@@ -60,7 +60,7 @@ These instructions apply to all work in this repository. Keep the site, its docu
 - `site.yml` runs for pull requests and pushes to `develop` and `main`. It checks out the theme submodule, installs the pinned Zola version, runs `zola check`, builds the site, restores missing empty feeds, validates generated files and local links, and uploads the Pages artifact. Only a successful push build on `main` can run the deployment job.
 - The Pages deployment uses the `github-pages` environment with `pages: write` and `id-token: write`. GitHub Pages must use **GitHub Actions** as its source, the custom domain must be configured in repository settings, and the environment's deployment branch policy must allow `main`.
 - `codeql.yml` analyzes Python and JavaScript on pushes and pull requests to both branches and on its weekly schedule. The maintained first-party code is Python; theme JavaScript is supplied by the upstream submodule and is not checked out in that workflow.
-- Dependabot updates Actions, the theme submodule, Dockerfile image inputs, and Dev Container configuration on their configured weekly schedules.
+- Dependabot updates Actions, the theme submodule, Dockerfile image inputs, and Dev Container configuration on their configured weekly schedules. Keep CodeQL action updates grouped so initialization and analysis use the same release.
 - When workflows change, document their trigger, job purpose, required permissions, and release behavior in comments and `README.md`.
 
 ## Review and Release Process
