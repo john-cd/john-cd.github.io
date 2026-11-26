@@ -6,6 +6,11 @@ updates:
     schedule:
       interval: weekly
       day: monday
+    groups:
+      # CodeQL initialization and analysis must use the same action version.
+      codeql-action:
+        patterns:
+          - "github/codeql-action*"
 
   - package-ecosystem: gitsubmodule
     directory: /
